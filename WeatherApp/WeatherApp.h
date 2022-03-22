@@ -2,7 +2,7 @@
 //  WeatherApp.h
 //  WeatherApp
 //
-//  Created by adanic on 3/21/22.
+//  Created by Kamyar Sehati on 3/21/22.
 //
 
 #import <Foundation/Foundation.h>
