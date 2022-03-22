@@ -34,10 +34,11 @@ final class RemoteCityLoader {
         let result = await self.client.get(get: self.url)
         switch result {
         case let .success((data, response)):
-            do {
-                let json = try JSONDecoder().decode([CityModel].self, from: data)
+
+            if response.statusCode == 200,
+               let json = try? JSONDecoder().decode([CityModel].self, from: data) {
                 return .success(json)
-            } catch {
+            } else {
                 return .failure(.invalidData)
             }
 

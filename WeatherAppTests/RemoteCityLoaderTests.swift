@@ -48,10 +48,10 @@ class RemoteCityLoaderTests: XCTestCase {
 
         let codes = [199, 201, 300, 400, 500]
         for (index, code) in codes.enumerated() {
-
+            let json = self.makeItemJson([])
             await self.expect(sut, completeWith: .failure(.invalidData)) {
                 client.setURL(url)
-                client.setResponse(code, data: Data(), at: index)
+                client.setResponse(code, data: json, at: index)
             }
         }
     }
