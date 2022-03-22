@@ -7,18 +7,6 @@
 
 import Foundation
 
-typealias result<T> = Result<T, Error>
-typealias HTTPResult<T> = Result<T, HTTPError>
-
-protocol HTTPClient {
-    func get(get url: URL) async -> HTTPResult<(Data, HTTPURLResponse)>
-}
-
-enum HTTPError: Error {
-    case connectivity
-    case invalidData
-}
-
 final class RemoteCityLoader {
 
     private let client: HTTPClient

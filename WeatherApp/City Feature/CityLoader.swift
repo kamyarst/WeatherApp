@@ -11,4 +11,3 @@ protocol CityLoader {
     func load(by name: String) async -> HTTPResult<CityModel>
     func load(lat: Double, lon: Double) async -> HTTPResult<CityModel>
 }
-
