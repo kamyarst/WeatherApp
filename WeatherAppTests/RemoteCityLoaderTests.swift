@@ -79,16 +79,16 @@ class RemoteCityLoaderTests: XCTestCase {
     func test_load_deliverItemsOn200() async {
         let (sut, client) = self.makeSUT()
 
-        let item1 = CityModel(id: 1, name: "City Name", region: nil, country: nil, latitude: 1, longitude: 1,
-                              url: URL(string: "https://someUrl.com")!)
+        let item1 = self.makeItem(id: 1, name: "City Name", region: nil, country: nil, latitude: 1,
+                                  longitude: 1, url: URL(string: "https://someUrl.com")!)
 
-        let item2 = CityModel(id: 2, name: "Tehran", region: "Tehran", country: "Iran", latitude: 2,
-                              longitude: 2, url: URL(string: "https://someUrl.com")!)
+        let item2 = self.makeItem(id: 2, name: "Tehran", region: "Tehran", country: "Iran", latitude: 2,
+                                  longitude: 2, url: URL(string: "https://someUrl.com")!)
 
-        let jsonObjects = self.createCites(cities: [item1, item2])
+        let jsonObjects = [item1.json, item2.json]
 
-        await self.expect(sut, completeWith: .success([item1, item2])) {
-            let json = try! JSONSerialization.data(withJSONObject: jsonObjects, options: .fragmentsAllowed)
+        await self.expect(sut, completeWith: .success([item1.model, item2.model])) {
+            let json = makeItemJson(jsonObjects)
             client.setURL()
             client.setResponse(200, data: json)
         }
@@ -103,17 +103,23 @@ class RemoteCityLoaderTests: XCTestCase {
         return (sut, client)
     }
 
-    private func createCites(cities: [CityModel]) -> [[String: Any]] {
+    private func makeItem(id: Int, name: String, region: String?, country: String?, latitude: Double,
+                          longitude: Double, url: URL) -> (model: CityModel, json: [String: Any]) {
 
-        cities.compactMap { item in
-            ["id": item.id,
-             "name": item.name,
-             "region": item.region as Any,
-             "country": item.country as Any,
-             "lat": item.latitude,
-             "lon": item.longitude,
-             "url": item.url.absoluteString] as [String: Any]
-        }
+        let item = CityModel(id: id, name: name, region: region, country: country, latitude: latitude,
+                             longitude: longitude, url: url)
+        let json = ["id": item.id,
+                    "name": item.name,
+                    "region": item.region as Any,
+                    "country": item.country as Any,
+                    "lat": item.latitude,
+                    "lon": item.longitude,
+                    "url": item.url.absoluteString].compactMapValues { $0 }
+        return (item, json)
+    }
+
+    private func makeItemJson(_ items: [[String: Any]]) -> Data {
+        try! JSONSerialization.data(withJSONObject: items, options: .fragmentsAllowed)
     }
 
     private func expect(_ sut: RemoteCityLoader, completeWith result: HTTPResult<[CityModel]>,
