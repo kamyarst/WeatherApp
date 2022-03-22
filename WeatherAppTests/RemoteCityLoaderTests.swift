@@ -36,7 +36,7 @@ class RemoteCityLoaderTests: XCTestCase {
         let url = URL(string: "https://google.com")!
         let (sut, client) = self.makeSUT(url: url)
 
-        await self.expect(sut, completeWith: .connectivity) {
+        await self.expect(sut, completeWith: .failure(.connectivity)) {
             client.setURL(url)
             client.setError(.connectivity)
         }
@@ -49,7 +49,7 @@ class RemoteCityLoaderTests: XCTestCase {
         let codes = [199, 201, 300, 400, 500]
         for (index, code) in codes.enumerated() {
 
-            await self.expect(sut, completeWith: .invalidData) {
+            await self.expect(sut, completeWith: .failure(.invalidData)) {
                 client.setURL(url)
                 client.setResponse(code, data: Data(), at: index)
             }
@@ -60,16 +60,20 @@ class RemoteCityLoaderTests: XCTestCase {
         let (sut, client) = self.makeSUT()
 
         let data = Data("Invalid json".utf8)
-        await self.expect(sut, completeWith: .invalidData) {
+        await self.expect(sut, completeWith: .failure(.invalidData)) {
             client.setURL()
             client.setResponse(200, data: data)
         }
     }
-    
-    func test_load_deliversNoItem200EmptyJson() {
+
+    func test_load_deliversNoItem200EmptyJson() async {
         let (sut, client) = self.makeSUT()
-        
-        
+
+        await self.expect(sut, completeWith: .success([])) {
+            let data = Data("[]".utf8)
+            client.setURL()
+            client.setResponse(200, data: data)
+        }
     }
 
     // MARK: - Helper class
@@ -81,7 +85,7 @@ class RemoteCityLoaderTests: XCTestCase {
         return (sut, client)
     }
 
-    private func expect(_ sut: RemoteCityLoader, completeWith error: HTTPError,
+    private func expect(_ sut: RemoteCityLoader, completeWith result: HTTPResult<[CityModel]>,
                         file: StaticString = #filePath, line: UInt = #line,
                         when action: () -> Void) async {
 
@@ -90,7 +94,7 @@ class RemoteCityLoaderTests: XCTestCase {
         action()
         let result = await sut.load()
         capturedResult.append(result)
-        XCTAssertEqual(capturedResult, [.failure(error)], file: file, line: line)
+        XCTAssertEqual(capturedResult, [result], file: file, line: line)
     }
 
     private class HTTPClientSpy: HTTPClient {
