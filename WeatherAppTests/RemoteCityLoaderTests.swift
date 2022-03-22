@@ -76,6 +76,24 @@ class RemoteCityLoaderTests: XCTestCase {
         }
     }
 
+    func test_load_deliverItemsOn200() async {
+        let (sut, client) = self.makeSUT()
+
+        let item1 = CityModel(id: 1, name: "City Name", region: nil, country: nil, latitude: 1, longitude: 1,
+                              url: URL(string: "https://someUrl.com")!)
+
+        let item2 = CityModel(id: 2, name: "Tehran", region: "Tehran", country: "Iran", latitude: 2,
+                              longitude: 2, url: URL(string: "https://someUrl.com")!)
+
+        let jsonObjects = self.createCites(cities: [item1, item2])
+
+        await self.expect(sut, completeWith: .success([item1, item2])) {
+            let json = try! JSONSerialization.data(withJSONObject: jsonObjects, options: .fragmentsAllowed)
+            client.setURL()
+            client.setResponse(200, data: json)
+        }
+    }
+
     // MARK: - Helper class
 
     private func makeSUT(url: URL = URL(string: "https://google.com")!)
@@ -85,6 +103,19 @@ class RemoteCityLoaderTests: XCTestCase {
         return (sut, client)
     }
 
+    private func createCites(cities: [CityModel]) -> [[String: Any]] {
+
+        cities.compactMap { item in
+            ["id": item.id,
+             "name": item.name,
+             "region": item.region as Any,
+             "country": item.country as Any,
+             "lat": item.latitude,
+             "lon": item.longitude,
+             "url": item.url.absoluteString] as [String: Any]
+        }
+    }
+
     private func expect(_ sut: RemoteCityLoader, completeWith result: HTTPResult<[CityModel]>,
                         file: StaticString = #filePath, line: UInt = #line,
                         when action: () -> Void) async {
@@ -92,8 +123,8 @@ class RemoteCityLoaderTests: XCTestCase {
         var capturedResult = [HTTPResult<[CityModel]>]()
 
         action()
-        let result = await sut.load()
-        capturedResult.append(result)
+        let loader = await sut.load()
+        capturedResult.append(loader)
         XCTAssertEqual(capturedResult, [result], file: file, line: line)
     }
 
