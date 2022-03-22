@@ -70,7 +70,7 @@ class RemoteCityLoaderTests: XCTestCase {
         let (sut, client) = self.makeSUT()
 
         await self.expect(sut, completeWith: .success([])) {
-            let data = Data("[]".utf8)
+            let data = makeItemJson([])
             client.setURL()
             client.setResponse(200, data: data)
         }
@@ -96,10 +96,19 @@ class RemoteCityLoaderTests: XCTestCase {
 
     // MARK: - Helper class
 
+    private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+
+        addTeardownBlock { [weak instance] () in
+            XCTAssertNil(instance, "Memory leak check", file: file, line: line)
+        }
+    }
+
     private func makeSUT(url: URL = URL(string: "https://google.com")!)
         -> (sut: RemoteCityLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteCityLoader(client: client, url: url)
+        trackMemoryLeak(sut)
+        trackMemoryLeak(client)
         return (sut, client)
     }
 
