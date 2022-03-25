@@ -6,6 +6,6 @@
 
 [Model Specs](./docs/model_specs.md)
 
-[Feed Use Cases](./docs/use_cases.md)
+[Weather Use Cases](./docs/use_cases.md)
 
 ---
