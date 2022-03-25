@@ -1,3 +1,4 @@
+// swiftlint:disable force_unwrapping
 //
 //  RemoteCityLoaderTests.swift
 //  WeatherAppTests
@@ -8,7 +9,7 @@
 @testable import WeatherApp
 import XCTest
 
-class RemoteCityLoaderTests: XCTestCase {
+final class RemoteCityLoaderTests: XCTestCase {
 
     func test_load_requestFromURL() async {
         let url = URL(string: "https://google.com")!
@@ -36,7 +37,7 @@ class RemoteCityLoaderTests: XCTestCase {
         let url = URL(string: "https://google.com")!
         let (sut, client) = self.makeSUT(url: url)
 
-        await self.expect(sut, completeWith: .failure(.connectivity)) {
+        await self.expect(sut, completeWith: .failure(HTTPError.connectivity)) {
             client.setURL(url)
             client.setError(.connectivity)
         }
@@ -49,7 +50,7 @@ class RemoteCityLoaderTests: XCTestCase {
         let codes = [199, 201, 300, 400, 500]
         for (index, code) in codes.enumerated() {
             let json = self.makeItemJson([])
-            await self.expect(sut, completeWith: .failure(.invalidData)) {
+            await self.expect(sut, completeWith: .failure(HTTPError.invalidData)) {
                 client.setURL(url)
                 client.setResponse(code, data: json, at: index)
             }
@@ -60,7 +61,7 @@ class RemoteCityLoaderTests: XCTestCase {
         let (sut, client) = self.makeSUT()
 
         let data = Data("Invalid json".utf8)
-        await self.expect(sut, completeWith: .failure(.invalidData)) {
+        await self.expect(sut, completeWith: .failure(HTTPError.invalidData)) {
             client.setURL()
             client.setResponse(200, data: data)
         }
@@ -95,6 +96,7 @@ class RemoteCityLoaderTests: XCTestCase {
     }
 
     // MARK: - Helper class
+    // swiftlint:disable function_parameter_count
 
     private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
 
@@ -128,19 +130,28 @@ class RemoteCityLoaderTests: XCTestCase {
     }
 
     private func makeItemJson(_ items: [[String: Any]]) -> Data {
-        try! JSONSerialization.data(withJSONObject: items, options: .fragmentsAllowed)
+        let data = try? JSONSerialization.data(withJSONObject: items, options: .fragmentsAllowed)
+        XCTAssertNotNil(data)
+        return data ?? Data()
     }
 
-    private func expect(_ sut: RemoteCityLoader, completeWith result: HTTPResult<[CityModel]>,
+    private func expect(_ sut: RemoteCityLoader, completeWith expectedResult: HTTPResult<[CityModel]>,
                         file: StaticString = #filePath, line: UInt = #line,
                         when action: () -> Void) async {
 
-        var capturedResult = [HTTPResult<[CityModel]>]()
-
         action()
-        let loader = await sut.load()
-        capturedResult.append(loader)
-        XCTAssertEqual(capturedResult, [result], file: file, line: line)
+        let receivedResult = await sut.load()
+
+        switch (receivedResult, expectedResult) {
+        case let (.success(receivedItems), .success(expectedItems)):
+            XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+
+        case let (.failure(receivedError as HTTPError), .failure(expectedError as HTTPError)):
+            XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+
+        default:
+            XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+        }
     }
 
     private class HTTPClientSpy: HTTPClient {
@@ -157,7 +168,7 @@ class RemoteCityLoaderTests: XCTestCase {
 
         func setURL(_ url: URL = URL(string: "https://google.com")!) {
 
-            self.completions.append((url, .failure(.connectivity)))
+            self.completions.append((url, .failure(HTTPError.connectivity)))
         }
 
         func setError(_ error: HTTPError, at index: Int = 0) {

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		62604AF127E8B9CB006A574B /* WeatherApp.docc in Sources */ = {isa = PBXBuildFile; fileRef = 62604AF027E8B9CB006A574B /* WeatherApp.docc */; };
 		62604AF727E8B9CB006A574B /* WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62604AEC27E8B9CB006A574B /* WeatherApp.framework */; };
-		62604AFD27E8B9CB006A574B /* WeatherApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 62604AEF27E8B9CB006A574B /* WeatherApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62604B1027E8D382006A574B /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B0F27E8D382006A574B /* CityModel.swift */; };
 		62604B1227E8D50A006A574B /* CityLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1127E8D50A006A574B /* CityLoader.swift */; };
 		62604B1427E8D8D7006A574B /* RemoteCityLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1327E8D8D7006A574B /* RemoteCityLoader.swift */; };
@@ -29,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		62604AEC27E8B9CB006A574B /* WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		62604AEF27E8B9CB006A574B /* WeatherApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherApp.h; sourceTree = "<group>"; };
 		62604AF027E8B9CB006A574B /* WeatherApp.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WeatherApp.docc; sourceTree = "<group>"; };
 		62604AF627E8B9CB006A574B /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62604B0F27E8D382006A574B /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		62604AEE27E8B9CB006A574B /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				62604AEF27E8B9CB006A574B /* WeatherApp.h */,
 				62604AF027E8B9CB006A574B /* WeatherApp.docc */,
 				62604B3A27EA364D006A574B /* City Feature */,
 				62604B3927EA363A006A574B /* City API */,
@@ -120,7 +117,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62604AFD27E8B9CB006A574B /* WeatherApp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

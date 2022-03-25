@@ -8,13 +8,13 @@
 
 import Foundation
 
-typealias HTTPResult<T> = Result<T, HTTPError>
-
-protocol HTTPClient {
-    func get(get url: URL) async -> HTTPResult<(Data, HTTPURLResponse)>
-}
-
 enum HTTPError: Error {
     case connectivity
     case invalidData
+}
+
+typealias HTTPResult<T> = Result<T, Error>
+
+protocol HTTPClient {
+    func get(get url: URL) async -> HTTPResult<(Data, HTTPURLResponse)>
 }

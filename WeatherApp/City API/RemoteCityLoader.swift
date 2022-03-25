@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RemoteCityLoader {
+final class RemoteCityLoader: CityLoader {
 
     private let client: HTTPClient
     private let url: URL
@@ -17,8 +17,15 @@ final class RemoteCityLoader {
         self.url = url
     }
 
-    func load() async -> HTTPResult<[CityModel]> {
+    func load(by name: String) async -> CityResult<[CityModel]> {
+        await self.load()
+    }
 
+    func load(lat: Double, lon: Double) async -> CityResult<[CityModel]> {
+        await self.load()
+    }
+
+    func load() async -> CityResult<[CityModel]> {
         let result = await self.client.get(get: self.url)
         switch result {
         case let .success((data, response)):
@@ -27,7 +34,7 @@ final class RemoteCityLoader {
                let json = try? JSONDecoder().decode([CityModel].self, from: data) {
                 return .success(json)
             } else {
-                return .failure(.invalidData)
+                return .failure(HTTPError.invalidData)
             }
 
         case let .failure(error):

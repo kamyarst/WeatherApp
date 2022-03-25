@@ -7,7 +7,9 @@
 
 import Foundation
 
+typealias CityResult<T> = Result<T, Error>
+
 protocol CityLoader {
-    func load(by name: String) async -> HTTPResult<CityModel>
-    func load(lat: Double, lon: Double) async -> HTTPResult<CityModel>
+    func load(by name: String) async -> CityResult<[CityModel]>
+    func load(lat: Double, lon: Double) async -> CityResult<[CityModel]>
 }
