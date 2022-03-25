@@ -1,0 +1,70 @@
+ 
+disabled_rules: # rule identifiers to exclude from running
+ - multiple_closures_with_trailing_closure
+ - trailing_whitespace
+# excluded: 
+# - paths to ignore during linting. Takes precedence over `included`.
+
+
+opt_in_rules:
+ - anyobject_protocol
+ - array_init
+ - closure_end_indentation
+ - closure_spacing
+ - contains_over_filter_count
+ - contains_over_first_not_nil
+ - deployment_target
+ - discouraged_object_literal
+ - empty_collection_literal
+ - empty_count
+ - empty_string
+ #- explicit_acl
+ - explicit_self
+ #- explicit_top_level_acl
+ - file_types_order
+ - first_where
+ - force_unwrapping
+ - function_default_parameter_at_end
+ - implicitly_unwrapped_optional
+ - last_where
+ - lower_acl_than_parent
+ #- multiline_function_chains
+ - operator_usage_whitespace
+ - overridden_super_call
+ - private_action
+ - private_outlet
+ - reduce_into
+ - redundant_type_annotation
+ - sorted_first_last
+ - strict_fileprivate
+ - toggle_bool
+ - type_contents_order
+ - unneeded_parentheses_in_closure_argument
+ - unowned_variable_capture
+ - unused_declaration
+ - unused_import
+ - vertical_parameter_alignment_on_call
+ - vertical_whitespace_between_cases
+ - vertical_whitespace_closing_braces
+ - yoda_condition
+
+type_contents_order:
+    order:
+        - case
+        - type_alias
+        - associated_type
+        - ib_outlet
+        - type_property
+        - instance_property
+        - ib_inspectable
+        - initializer
+        - deinitializer
+        - view_life_cycle_method
+        - type_method
+        - other_method
+        - ib_action
+        - subtype
+        - subscript
+
+identifier_name:
+    min_length: 2
