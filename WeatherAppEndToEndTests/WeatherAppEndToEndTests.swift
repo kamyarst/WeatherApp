@@ -13,11 +13,12 @@ class WeatherAppEndToEndTests: XCTestCase {
 
     func test_endToEndTestServerGetLocationResultByName() async {
 
-        let result = await self.getLocationResult(for: .getByName(name: "London"))
+        let location = "London"
+        let result = await self.getLocationResult(for: .getByName(name: location))
 
         switch result {
         case let .success(items):
-            print(items)
+            XCTAssertFalse(items.filter { $0.name.contains(location) }.isEmpty)
             XCTAssertEqual(items.isEmpty, false)
 
         case let .failure(error):
@@ -27,11 +28,12 @@ class WeatherAppEndToEndTests: XCTestCase {
 
     func test_endToEndTestServerGetLocationResultByLatAndLon() async {
 
-        let result = await self.getLocationResult(for: .getByGeo(lat: 51.52, lon: -0.11))
+        let geo = (lat: 51.49, lon: -0.12)
+        let result = await self.getLocationResult(for: .getByGeo(lat: geo.lat, lon: geo.lon))
 
         switch result {
         case let .success(items):
-            print(items)
+            XCTAssertTrue(items.contains(where: { $0.latitude == geo.lat && $0.longitude == geo.lon }))
             XCTAssertEqual(items.isEmpty, false)
 
         case let .failure(error):
@@ -40,14 +42,14 @@ class WeatherAppEndToEndTests: XCTestCase {
     }
 
     // MARK: - Helpers
-    
+
     private func getLocationResult(for endpoint: LocationEndpoint,
                                    file: StaticString = #filePath,
                                    line: UInt = #line) async -> LocationResult<[LocationModel]> {
         let key = "66a6dc4a010e4e91919132456222103"
         let base = URL(string: "https://api.weatherapi.com")!
         let url = endpoint.url(baseURL: base, key: key)
-        let client = URLSessionHTTPClient()
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         let loader = RemoteLocationLoader(client: client, url: url)
         trackMemoryLeak(client, file: file, line: line)
         trackMemoryLeak(loader, file: file, line: line)
