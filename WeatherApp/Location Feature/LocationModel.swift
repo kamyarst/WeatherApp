@@ -1,5 +1,5 @@
 //
-//  CityModel.swift
+//  LocationModel.swift
 //  WeatherApp
 //
 //  Created by Kamyar Sehati on 3/21/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CityModel: Equatable {
+struct LocationModel: Equatable {
     let id: Int
     let name: String
     let region: String?
@@ -18,7 +18,7 @@ struct CityModel: Equatable {
 
 // MARK: Codable
 
-extension CityModel: Codable {
+extension LocationModel: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case id

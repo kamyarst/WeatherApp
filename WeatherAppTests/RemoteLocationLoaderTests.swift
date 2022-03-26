@@ -1,6 +1,6 @@
 // swiftlint:disable force_unwrapping
 //
-//  RemoteCityLoaderTests.swift
+//  RemoteLocationLoaderTests.swift
 //  WeatherAppTests
 //
 //  Created by Kamyar Sehati on 3/21/22.
@@ -9,7 +9,7 @@
 @testable import WeatherApp
 import XCTest
 
-final class RemoteCityLoaderTests: XCTestCase {
+final class RemoteLocationLoaderTests: XCTestCase {
 
     func test_load_requestFromURL() async {
         let url = URL(string: "https://google.com")!
@@ -80,7 +80,7 @@ final class RemoteCityLoaderTests: XCTestCase {
     func test_load_deliverItemsOn200() async {
         let (sut, client) = self.makeSUT()
 
-        let item1 = self.makeItem(id: 1, name: "City Name", region: nil, country: nil, latitude: 1,
+        let item1 = self.makeItem(id: 1, name: "Location Name", region: nil, country: nil, latitude: 1,
                                   longitude: 1, url: URL(string: "https://someUrl.com")!)
 
         let item2 = self.makeItem(id: 2, name: "Tehran", region: "Tehran", country: "Iran", latitude: 2,
@@ -106,18 +106,18 @@ final class RemoteCityLoaderTests: XCTestCase {
     }
 
     private func makeSUT(url: URL = URL(string: "https://google.com")!)
-        -> (sut: RemoteCityLoader, client: HTTPClientSpy) {
+        -> (sut: RemoteLocationLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
-        let sut = RemoteCityLoader(client: client, url: url)
+        let sut = RemoteLocationLoader(client: client, url: url)
         trackMemoryLeak(sut)
         trackMemoryLeak(client)
         return (sut, client)
     }
 
     private func makeItem(id: Int, name: String, region: String?, country: String?, latitude: Double,
-                          longitude: Double, url: URL) -> (model: CityModel, json: [String: Any]) {
+                          longitude: Double, url: URL) -> (model: LocationModel, json: [String: Any]) {
 
-        let item = CityModel(id: id, name: name, region: region, country: country, latitude: latitude,
+        let item = LocationModel(id: id, name: name, region: region, country: country, latitude: latitude,
                              longitude: longitude, url: url)
         let json = ["id": item.id,
                     "name": item.name,
@@ -135,7 +135,7 @@ final class RemoteCityLoaderTests: XCTestCase {
         return data ?? Data()
     }
 
-    private func expect(_ sut: RemoteCityLoader, completeWith expectedResult: HTTPResult<[CityModel]>,
+    private func expect(_ sut: RemoteLocationLoader, completeWith expectedResult: HTTPResult<[LocationModel]>,
                         file: StaticString = #filePath, line: UInt = #line,
                         when action: () -> Void) async {
 
