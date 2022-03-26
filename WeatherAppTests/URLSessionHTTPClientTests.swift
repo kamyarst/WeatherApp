@@ -16,16 +16,15 @@ class URLSessionHTTPClientTests: XCTestCase {
 
         URLProtocolStub.removeStub()
     }
-    
+
     func test_getFromURL_performsGETRequestWithURL() async {
         let url = anyURL()
-        
-        
-        _ = await makeSUT().get(from: url)
+
         URLProtocolStub.observeRequests { request in
             XCTAssertEqual(request.url, url)
             XCTAssertEqual(request.httpMethod, "GET")
         }
+        _ = await makeSUT().get(from: url)
     }
 
     func test_getFromURL_failsOnRequestError() async {
