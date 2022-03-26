@@ -1,4 +1,4 @@
-//
+// swiftlint:disable force_unwrapping nesting
 //  URLSessionHTTPClientTests.swift
 //  WeatherAppTests
 //
@@ -9,19 +9,10 @@
 @testable import WeatherApp
 import XCTest
 
-protocol HTTPSession {
-    func dataTask(with url: URL,
-                  completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPSessionTask
-}
-
-protocol HTTPSessionTask {
-    func resume()
-}
-
 class URLSessionHTTPClient {
 
-    private var session: HTTPSession
-    init(session: HTTPSession) {
+    private var session: URLSession
+    init(session: URLSession = .shared) {
         self.session = session
     }
 
@@ -40,24 +31,23 @@ class URLSessionHTTPClient {
 
 class URLSessionHTTPClientTests: XCTestCase {
 
-    func test() async {
-        let url = URL(string: "http://google.com")!
-        let session = HTTPSessionSpy()
-        let sut = URLSessionHTTPClient(session: session)
-        let task = URLSessionDataTaskSpy()
-        session.stub(url: url, task: task)
-        let result = await sut.get(from: url)
+    override func setUp() async throws {
+        try await super.setUp()
+        URLProtocolSub.register()
+    }
 
-        XCTAssertEqual(task.resumeCallCount, 1)
+    override func tearDown() async throws {
+        try await super.tearDown()
+        URLProtocolSub.unregister()
     }
 
     func test_getFromURL_failsOnRequestError() async {
 
         let url = URL(string: "http://google.com")!
-        let session = HTTPSessionSpy()
-        let error = NSError(domain: "any", code: 1)
-        let sut = URLSessionHTTPClient(session: session)
-        session.stub(url: url, error: error)
+        let error = NSError(domain: "some error", code: 1)
+        URLProtocolSub.stub(url: url, error: error)
+
+        let sut = URLSessionHTTPClient()
         let result = await sut.get(from: url)
 
         switch result {
@@ -71,37 +61,45 @@ class URLSessionHTTPClientTests: XCTestCase {
 
     // MARK: - Helpers
 
-    private class HTTPSessionSpy: HTTPSession {
+    private class URLProtocolSub: URLProtocol {
         private struct Stub {
-            let task: HTTPSessionTask
             let error: Error?
         }
 
-        private var stubs = [URL: Stub]()
+        private static var stubs = [URL: Stub]()
 
-        func stub(url: URL, task: HTTPSessionTask = FakeURLSessionDataTask(), error: Error? = nil) {
-            self.stubs[url] = Stub(task: task, error: error)
+        static func stub(url: URL, error: Error? = nil) {
+            self.stubs[url] = Stub(error: error)
         }
 
-        func dataTask(with url: URL,
-                      completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPSessionTask {
-            guard let stub = stubs[url] else {
-                fatalError()
+        static func register() {
+            URLProtocol.registerClass(URLProtocolSub.self)
+        }
+
+        static func unregister() {
+            URLProtocol.unregisterClass(URLProtocolSub.self)
+            self.stubs = [:]
+        }
+
+        override class func canInit(with request: URLRequest) -> Bool {
+            guard let url = request.url else { return false }
+
+            return self.stubs[url] != nil
+        }
+
+        override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+            request
+        }
+
+        override func startLoading() {
+            guard let url = request.url, let stub = URLProtocolSub.stubs[url] else { return }
+            if let error = stub.error {
+                client?.urlProtocol(self, didFailWithError: error)
             }
-            completionHandler(nil, nil, stub.error)
-            return stub.task
+
+            client?.urlProtocolDidFinishLoading(self)
         }
-    }
 
-    private class FakeURLSessionDataTask: HTTPSessionTask {
-        func resume() { }
-    }
-
-    private class URLSessionDataTaskSpy: HTTPSessionTask {
-        var resumeCallCount = 0
-
-        func resume() {
-            self.resumeCallCount += 1
-        }
+        override func stopLoading() { }
     }
 }
