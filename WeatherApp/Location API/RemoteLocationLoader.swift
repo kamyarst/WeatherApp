@@ -7,7 +7,7 @@
 
 import Foundation
 
-final public class RemoteLocationLoader: LocationLoader {
+public final class RemoteLocationLoader: LocationLoader {
 
     private let client: HTTPClient
     private var url: URL
@@ -18,12 +18,15 @@ final public class RemoteLocationLoader: LocationLoader {
     }
 
     public func load(by name: String) async -> LocationResult<[LocationModel]> {
-        self.url = URL(string: self.url.absoluteString + "q=\(name)")!
+
+        self.url = self.url.appending("q", value: name)
         return await self.load()
     }
 
     public func load(lat: Double, lon: Double) async -> LocationResult<[LocationModel]> {
-        await self.load()
+
+        self.url = self.url.appending("q", value: "\(lat),\(lon)")
+        return await self.load()
     }
 
     func load() async -> LocationResult<[LocationModel]> {
