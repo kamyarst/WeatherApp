@@ -22,7 +22,7 @@
 		62604B1027E8D382006A574B /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B0F27E8D382006A574B /* LocationModel.swift */; };
 		62604B1227E8D50A006A574B /* LocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1127E8D50A006A574B /* LocationLoader.swift */; };
 		62604B1427E8D8D7006A574B /* RemoteLocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */; };
-		62604B1627E8D9F1006A574B /* RemoteLocationLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1527E8D9F1006A574B /* RemoteLocationLoaderTests.swift */; };
+		62604B1627E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,7 @@
 		62604B0F27E8D382006A574B /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		62604B1127E8D50A006A574B /* LocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLoader.swift; sourceTree = "<group>"; };
 		62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLocationLoader.swift; sourceTree = "<group>"; };
-		62604B1527E8D9F1006A574B /* RemoteLocationLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLocationLoaderTests.swift; sourceTree = "<group>"; };
+		62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				622AF6FF27EF1D7C0042693B /* Helpers */,
-				62604B1527E8D9F1006A574B /* RemoteLocationLoaderTests.swift */,
+				62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */,
 				622AF6F527EE17AF0042693B /* URLSessionHTTPClientTests.swift */,
 			);
 			path = WeatherAppTests;
@@ -375,7 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				622AF70427EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
-				62604B1627E8D9F1006A574B /* RemoteLocationLoaderTests.swift in Sources */,
+				62604B1627E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift in Sources */,
 				622AF70527EF1D7C0042693B /* SharedTestsHelpers.swift in Sources */,
 				622AF6F627EE17AF0042693B /* URLSessionHTTPClientTests.swift in Sources */,
 			);

@@ -19,7 +19,7 @@ class WeatherAppEndToEndTests: XCTestCase {
         switch result {
         case let .success(items):
             XCTAssertFalse(items.filter { $0.name.contains(location) }.isEmpty)
-            XCTAssertEqual(items.isEmpty, false)
+            XCTAssertFalse(items.isEmpty)
 
         case let .failure(error):
             XCTFail("Not expected with \(error)")
@@ -34,7 +34,7 @@ class WeatherAppEndToEndTests: XCTestCase {
         switch result {
         case let .success(items):
             XCTAssertTrue(items.contains(where: { $0.latitude == geo.lat && $0.longitude == geo.lon }))
-            XCTAssertEqual(items.isEmpty, false)
+            XCTAssertFalse(items.isEmpty)
 
         case let .failure(error):
             XCTFail("Not expected with \(error)")

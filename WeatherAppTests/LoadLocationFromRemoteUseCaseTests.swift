@@ -1,6 +1,6 @@
 // swiftlint:disable force_unwrapping
 //
-//  RemoteLocationLoaderTests.swift
+//  LoadLocationFromRemoteUseCaseTests.swift
 //  WeatherAppTests
 //
 //  Created by Kamyar Sehati on 3/21/22.
@@ -9,7 +9,7 @@
 @testable import WeatherApp
 import XCTest
 
-final class RemoteLocationLoaderTests: XCTestCase {
+final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
 
     func test_load_requestFromURL() async {
         let url = anyURL()
