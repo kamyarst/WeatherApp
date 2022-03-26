@@ -26,7 +26,7 @@ final class RemoteLocationLoader: LocationLoader {
     }
 
     func load() async -> LocationResult<[LocationModel]> {
-        let result = await self.client.get(get: self.url)
+        let result = await self.client.get(from: self.url)
         switch result {
         case let .success((data, response)):
 

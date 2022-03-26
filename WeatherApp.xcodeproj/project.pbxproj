@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		622AF6F627EE17AF0042693B /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AF6F527EE17AF0042693B /* URLSessionHTTPClientTests.swift */; };
+		622AF6FC27EF19DB0042693B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AF6F827EF19DB0042693B /* HTTPClient.swift */; };
+		622AF6FE27EF19DB0042693B /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AF6FB27EF19DB0042693B /* URLSessionHTTPClient.swift */; };
+		622AF70427EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AF70127EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift */; };
+		622AF70527EF1D7C0042693B /* SharedTestsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622AF70227EF1D7C0042693B /* SharedTestsHelpers.swift */; };
 		62604AF127E8B9CB006A574B /* WeatherApp.docc in Sources */ = {isa = PBXBuildFile; fileRef = 62604AF027E8B9CB006A574B /* WeatherApp.docc */; };
 		62604AF727E8B9CB006A574B /* WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62604AEC27E8B9CB006A574B /* WeatherApp.framework */; };
 		62604B1027E8D382006A574B /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B0F27E8D382006A574B /* LocationModel.swift */; };
 		62604B1227E8D50A006A574B /* LocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1127E8D50A006A574B /* LocationLoader.swift */; };
 		62604B1427E8D8D7006A574B /* RemoteLocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */; };
 		62604B1627E8D9F1006A574B /* RemoteLocationLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1527E8D9F1006A574B /* RemoteLocationLoaderTests.swift */; };
-		62604B3C27EA3689006A574B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B3B27EA3689006A574B /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,10 @@
 
 /* Begin PBXFileReference section */
 		622AF6F527EE17AF0042693B /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		622AF6F827EF19DB0042693B /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		622AF6FB27EF19DB0042693B /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		622AF70127EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeaksTracking.swift"; sourceTree = "<group>"; };
+		622AF70227EF1D7C0042693B /* SharedTestsHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTestsHelpers.swift; sourceTree = "<group>"; };
 		62604AEC27E8B9CB006A574B /* WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62604AF027E8B9CB006A574B /* WeatherApp.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WeatherApp.docc; sourceTree = "<group>"; };
 		62604AF627E8B9CB006A574B /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,7 +43,6 @@
 		62604B1127E8D50A006A574B /* LocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLoader.swift; sourceTree = "<group>"; };
 		62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLocationLoader.swift; sourceTree = "<group>"; };
 		62604B1527E8D9F1006A574B /* RemoteLocationLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLocationLoaderTests.swift; sourceTree = "<group>"; };
-		62604B3B27EA3689006A574B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		622AF6F727EF19DB0042693B /* Shared API */ = {
+			isa = PBXGroup;
+			children = (
+				622AF6F827EF19DB0042693B /* HTTPClient.swift */,
+			);
+			path = "Shared API";
+			sourceTree = "<group>";
+		};
+		622AF6FA27EF19DB0042693B /* Shared API Infra */ = {
+			isa = PBXGroup;
+			children = (
+				622AF6FB27EF19DB0042693B /* URLSessionHTTPClient.swift */,
+			);
+			path = "Shared API Infra";
+			sourceTree = "<group>";
+		};
+		622AF6FF27EF1D7C0042693B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				622AF70127EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift */,
+				622AF70227EF1D7C0042693B /* SharedTestsHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		62604AE227E8B9CB006A574B = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				62604AF027E8B9CB006A574B /* WeatherApp.docc */,
+				622AF6F727EF19DB0042693B /* Shared API */,
+				622AF6FA27EF19DB0042693B /* Shared API Infra */,
 				62604B3A27EA364D006A574B /* Location Feature */,
 				62604B3927EA363A006A574B /* Location API */,
 			);
@@ -89,6 +122,7 @@
 		62604AFA27E8B9CB006A574B /* WeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				622AF6FF27EF1D7C0042693B /* Helpers */,
 				62604B1527E8D9F1006A574B /* RemoteLocationLoaderTests.swift */,
 				622AF6F527EE17AF0042693B /* URLSessionHTTPClientTests.swift */,
 			);
@@ -99,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */,
-				62604B3B27EA3689006A574B /* HTTPClient.swift */,
 			);
 			path = "Location API";
 			sourceTree = "<group>";
@@ -245,7 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				62604B1227E8D50A006A574B /* LocationLoader.swift in Sources */,
-				62604B3C27EA3689006A574B /* HTTPClient.swift in Sources */,
+				622AF6FC27EF19DB0042693B /* HTTPClient.swift in Sources */,
+				622AF6FE27EF19DB0042693B /* URLSessionHTTPClient.swift in Sources */,
 				62604B1427E8D8D7006A574B /* RemoteLocationLoader.swift in Sources */,
 				62604B1027E8D382006A574B /* LocationModel.swift in Sources */,
 				62604AF127E8B9CB006A574B /* WeatherApp.docc in Sources */,
@@ -256,7 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				622AF70427EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
 				62604B1627E8D9F1006A574B /* RemoteLocationLoaderTests.swift in Sources */,
+				622AF70527EF1D7C0042693B /* SharedTestsHelpers.swift in Sources */,
 				622AF6F627EE17AF0042693B /* URLSessionHTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

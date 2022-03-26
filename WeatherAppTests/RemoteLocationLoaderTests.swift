@@ -12,7 +12,7 @@ import XCTest
 final class RemoteLocationLoaderTests: XCTestCase {
 
     func test_load_requestFromURL() async {
-        let url = URL(string: "https://google.com")!
+        let url = anyURL()
         let (sut, client) = self.makeSUT(url: url)
 
         client.setURL(url)
@@ -22,7 +22,7 @@ final class RemoteLocationLoaderTests: XCTestCase {
     }
 
     func test_loadTwice_requestFromURL() async {
-        let url = URL(string: "https://google.com")!
+        let url = anyURL()
         let (sut, client) = self.makeSUT(url: url)
 
         client.setURL(url)
@@ -34,7 +34,7 @@ final class RemoteLocationLoaderTests: XCTestCase {
     }
 
     func test_load_deliverErrorOnClientIssue() async {
-        let url = URL(string: "https://google.com")!
+        let url = anyURL()
         let (sut, client) = self.makeSUT(url: url)
 
         await self.expect(sut, completeWith: .failure(HTTPError.connectivity)) {
@@ -44,7 +44,7 @@ final class RemoteLocationLoaderTests: XCTestCase {
     }
 
     func test_load_deliverErrorOnNon200() async {
-        let url = URL(string: "https://google.com")!
+        let url = anyURL()
         let (sut, client) = self.makeSUT(url: url)
 
         let codes = [199, 201, 300, 400, 500]
@@ -81,10 +81,10 @@ final class RemoteLocationLoaderTests: XCTestCase {
         let (sut, client) = self.makeSUT()
 
         let item1 = self.makeItem(id: 1, name: "Location Name", region: nil, country: nil, latitude: 1,
-                                  longitude: 1, url: URL(string: "https://someUrl.com")!)
+                                  longitude: 1, url: anyURL())
 
         let item2 = self.makeItem(id: 2, name: "Tehran", region: "Tehran", country: "Iran", latitude: 2,
-                                  longitude: 2, url: URL(string: "https://someUrl.com")!)
+                                  longitude: 2, url: anyURL())
 
         let jsonObjects = [item1.json, item2.json]
 
@@ -96,16 +96,10 @@ final class RemoteLocationLoaderTests: XCTestCase {
     }
 
     // MARK: - Helper class
+
     // swiftlint:disable function_parameter_count
 
-    private func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-
-        addTeardownBlock { [weak instance] () in
-            XCTAssertNil(instance, "Memory leak check", file: file, line: line)
-        }
-    }
-
-    private func makeSUT(url: URL = URL(string: "https://google.com")!)
+    private func makeSUT(url: URL = anyURL())
         -> (sut: RemoteLocationLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteLocationLoader(client: client, url: url)
@@ -118,7 +112,7 @@ final class RemoteLocationLoaderTests: XCTestCase {
                           longitude: Double, url: URL) -> (model: LocationModel, json: [String: Any]) {
 
         let item = LocationModel(id: id, name: name, region: region, country: country, latitude: latitude,
-                             longitude: longitude, url: url)
+                                 longitude: longitude, url: url)
         let json = ["id": item.id,
                     "name": item.name,
                     "region": item.region as Any,
@@ -162,11 +156,11 @@ final class RemoteLocationLoaderTests: XCTestCase {
             self.completions.map { $0.url }
         }
 
-        func get(get url: URL) async -> HTTPResult<(Data, HTTPURLResponse)> {
+        func get(from url: URL) async -> HTTPResult<(Data, HTTPURLResponse)> {
             self.completions.last!.result
         }
 
-        func setURL(_ url: URL = URL(string: "https://google.com")!) {
+        func setURL(_ url: URL = anyURL()) {
 
             self.completions.append((url, .failure(HTTPError.connectivity)))
         }
