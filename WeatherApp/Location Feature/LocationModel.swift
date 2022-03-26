@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationModel: Equatable {
+public struct LocationModel: Equatable {
     let id: Int
     let name: String
     let region: String?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias LocationResult<T> = Result<T, Error>
+public typealias LocationResult<T> = Result<T, Error>
 
 protocol LocationLoader {
     func load(by name: String) async -> LocationResult<[LocationModel]>
