@@ -17,19 +17,7 @@ public final class RemoteLocationLoader: LocationLoader {
         self.url = url
     }
 
-    public func load(by name: String) async -> LocationResult<[LocationModel]> {
-
-        self.url = self.url.appending("q", value: name)
-        return await self.load()
-    }
-
-    public func load(lat: Double, lon: Double) async -> LocationResult<[LocationModel]> {
-
-        self.url = self.url.appending("q", value: "\(lat),\(lon)")
-        return await self.load()
-    }
-
-    func load() async -> LocationResult<[LocationModel]> {
+    public func load() async -> LocationResult<[LocationModel]> {
 
         let result = await self.client.get(from: self.url)
         switch result {
