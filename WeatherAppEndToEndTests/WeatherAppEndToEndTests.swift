@@ -47,7 +47,6 @@ class WeatherAppEndToEndTests: XCTestCase {
         let key = "66a6dc4a010e4e91919132456222103"
         let base = URL(string: "https://api.weatherapi.com")!
         let url = endpoint.url(baseURL: base, key: key)
-        print(url.absoluteString)
         let client = URLSessionHTTPClient()
         let loader = RemoteLocationLoader(client: client, url: url)
         trackMemoryLeak(client, file: file, line: line)
