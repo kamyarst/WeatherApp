@@ -1,8 +1,7 @@
 # WeatherApp
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kamyarst/weatherapp/CI-iOS)
-![GitHub](https://img.shields.io/github/license/kamyarst/WeatherApp)
-
+![GitHub](https://img.shields.io/github/license/kamyarst/weatherapp)
 
 ## App Requirements
 
