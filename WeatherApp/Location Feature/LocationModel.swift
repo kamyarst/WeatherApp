@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct LocationModel: Equatable {
-    let id: Int
-    let name: String
-    let region: String?
-    let country: String?
-    let latitude, longitude: Double
-    let url: URL
+public struct LocationModel: Equatable {
+    public let id: Int
+    public let name: String
+    public let region: String?
+    public let country: String?
+    public let latitude, longitude: Double
+    public let url: URL
 }
 
 // MARK: Codable

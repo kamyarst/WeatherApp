@@ -7,26 +7,19 @@
 
 import Foundation
 
-final class RemoteLocationLoader: LocationLoader {
+public final class RemoteLocationLoader: LocationLoader {
 
     private let client: HTTPClient
-    private let url: URL
+    private var url: URL
 
-    init(client: HTTPClient, url: URL) {
+    public init(client: HTTPClient, url: URL) {
         self.client = client
         self.url = url
     }
 
-    func load(by name: String) async -> LocationResult<[LocationModel]> {
-        await self.load()
-    }
+    public func load() async -> LocationResult<[LocationModel]> {
 
-    func load(lat: Double, lon: Double) async -> LocationResult<[LocationModel]> {
-        await self.load()
-    }
-
-    func load() async -> LocationResult<[LocationModel]> {
-        let result = await self.client.get(get: self.url)
+        let result = await self.client.get(from: self.url)
         switch result {
         case let .success((data, response)):
 
