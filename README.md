@@ -1,5 +1,9 @@
 # WeatherApp
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kamyarst/weatherapp/CI-iOS)
+![GitHub](https://img.shields.io/github/license/kamyarst/WeatherApp)
+
+
 ## App Requirements
 
 [BDD Specs](./docs/BDD_specs.md)
@@ -21,4 +25,4 @@ The API is provided by [WeatherAPI](https://www.weatherapi.com/)
 ## Todo
 - [X] SwiftLint
 - [X] SwiftFormat
-- [ ] GitHub Actions
+- [X] GitHub Actions
