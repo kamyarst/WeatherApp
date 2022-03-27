@@ -24,7 +24,7 @@ class URLSessionHTTPClientTests: XCTestCase {
             XCTAssertEqual(request.url, url)
             XCTAssertEqual(request.httpMethod, "GET")
         }
-        _ = await makeSUT().get(from: url)
+        _ = await self.makeSUT().get(from: url)
     }
 
     func test_getFromURL_failsOnRequestError() async {

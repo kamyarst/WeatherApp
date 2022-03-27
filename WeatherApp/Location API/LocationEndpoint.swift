@@ -16,13 +16,13 @@ public enum LocationEndpoint {
         switch self {
         case let .getByName(name):
             return baseURL.appendingPathComponent("/v1/search.json")
-                .appending("key", value: key)
-                .appending("q", value: name)
+                .appendQuery("key", value: key)
+                .appendQuery("q", value: name)
 
         case let .getByGeo(lat, lon):
             return baseURL.appendingPathComponent("/v1/search.json")
-                .appending("key", value: key)
-                .appending("q", value: "\(lat),\(lon)")
+                .appendQuery("key", value: key)
+                .appendQuery("q", value: "\(lat),\(lon)")
         }
     }
 }
