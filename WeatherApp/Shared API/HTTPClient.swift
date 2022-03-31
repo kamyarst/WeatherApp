@@ -21,7 +21,7 @@ public protocol HTTPClient {
     func get(from url: URL) async -> HTTPResult<(Data, HTTPURLResponse)>
 }
 
-enum HTTPError: Error {
+public enum HTTPError: Error {
     case connectivity
     case invalidData
     case unexpected

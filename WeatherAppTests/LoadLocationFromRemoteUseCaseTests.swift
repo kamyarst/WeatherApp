@@ -119,12 +119,12 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
                     "country": item.country as Any,
                     "lat": item.latitude,
                     "lon": item.longitude,
-                    "url": item.url.absoluteString].compactMapValues { $0 }
+                    "url": item.url?.absoluteString as Any].compactMapValues { $0 }
         return (item, json)
     }
 
     private func makeItemJson(_ items: [[String: Any]]) -> Data {
-        let data = try? JSONSerialization.data(withJSONObject: items, options: .fragmentsAllowed)
+        let data = try? JSONSerialization.data(withJSONObject: items, options: [.fragmentsAllowed, .withoutEscapingSlashes])
         XCTAssertNotNil(data)
         return data ?? Data()
     }
@@ -145,36 +145,6 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
 
         default:
             XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
-        }
-    }
-
-    private class HTTPClientSpy: HTTPClient {
-
-        private var completions = [(url: URL, result: HTTPResult<(Data, HTTPURLResponse)>)]()
-
-        var requestedURLs: [URL] {
-            self.completions.map { $0.url }
-        }
-
-        func get(from url: URL) async -> HTTPResult<(Data, HTTPURLResponse)> {
-            self.completions.last!.result
-        }
-
-        func setURL(_ url: URL = anyURL()) {
-
-            self.completions.append((url, .failure(HTTPError.connectivity)))
-        }
-
-        func setError(_ error: HTTPError, at index: Int = 0) {
-
-            self.completions[index].result = .failure(error)
-        }
-
-        func setResponse(_ code: Int, data: Data, at index: Int = 0) {
-
-            let response = HTTPURLResponse(url: completions[index].url, statusCode: code, httpVersion: nil,
-                                           headerFields: nil)!
-            self.completions[index].result = .success((data, response))
         }
     }
 }
