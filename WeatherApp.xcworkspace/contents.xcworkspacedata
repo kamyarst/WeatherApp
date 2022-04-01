@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:WeatherApp/WeatherApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:WeatherCore.xcodeproj">
    </FileRef>
 </Workspace>
