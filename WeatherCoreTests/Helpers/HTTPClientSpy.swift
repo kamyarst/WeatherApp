@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import WeatherApp
+import WeatherCore
 
 class HTTPClientSpy: HTTPClient {
     

@@ -6,7 +6,7 @@
 //  Copyright © 2022 Kamyar Sehati. All rights reserved.
 //
 
-@testable import WeatherApp
+@testable import WeatherCore
 import XCTest
 
 class LocationEndToEndTests: XCTestCase {

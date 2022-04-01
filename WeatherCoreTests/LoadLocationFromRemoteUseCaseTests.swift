@@ -6,7 +6,7 @@
 //  Created by Kamyar Sehati on 3/21/22.
 //
 
-@testable import WeatherApp
+@testable import WeatherCore
 import XCTest
 
 final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
