@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol WeatherLoader {
+    func load() async -> Result<WeatherModel, Error>
+}
+
 public class RemoteWeatherLoader: WeatherLoader {
 
     let url: URL
@@ -35,8 +39,4 @@ public class RemoteWeatherLoader: WeatherLoader {
             return .failure(error)
         }
     }
-}
-
-protocol WeatherLoader {
-    func load() async -> Result<WeatherModel, Error>
 }

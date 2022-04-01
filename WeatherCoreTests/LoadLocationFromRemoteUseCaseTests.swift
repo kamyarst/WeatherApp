@@ -113,7 +113,7 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
 
         let item = LocationModel(id: id, name: name, region: region, country: country, latitude: latitude,
                                  longitude: longitude, url: url)
-        let json = ["id": item.id,
+        let json = ["id": item.id as Any,
                     "name": item.name,
                     "region": item.region as Any,
                     "country": item.country as Any,
@@ -124,7 +124,8 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
     }
 
     private func makeItemJson(_ items: [[String: Any]]) -> Data {
-        let data = try? JSONSerialization.data(withJSONObject: items, options: [.fragmentsAllowed, .withoutEscapingSlashes])
+        let data = try? JSONSerialization.data(withJSONObject: items,
+                                               options: [.fragmentsAllowed, .withoutEscapingSlashes])
         XCTAssertNotNil(data)
         return data ?? Data()
     }

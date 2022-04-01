@@ -9,6 +9,12 @@ import Foundation
 
 public typealias HTTPResult<T> = Result<T, Error>
 
+public enum HTTPError: Error {
+    case connectivity
+    case invalidData
+    case unexpected
+}
+
 public protocol HTTPClientTask {
     func cancel()
 }
@@ -19,10 +25,4 @@ public protocol HTTPClient {
     /// Clients are responsible to dispatch to appropriate threads, if needed.
     @discardableResult
     func get(from url: URL) async -> HTTPResult<(Data, HTTPURLResponse)>
-}
-
-public enum HTTPError: Error {
-    case connectivity
-    case invalidData
-    case unexpected
 }

@@ -1,8 +1,8 @@
-//
+// swiftllint:disable force_unwrapping
 //  HTTPClientSpy.swift
 //  WeatherAppTests
 //
-//  Created by adanic on 3/28/22.
+//  Created by Kamyar on 3/28/22.
 //  Copyright © 2022 Kamyar Sehati. All rights reserved.
 //
 

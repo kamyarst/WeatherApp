@@ -2,15 +2,17 @@
 //  WeatherModel.swift
 //  WeatherApp
 //
-//  Created by adanic on 3/28/22.
+//  Created by Kamyar on 3/28/22.
 //  Copyright © 2022 Kamyar Sehati. All rights reserved.
 //
 
 import Foundation
+
 public struct WeatherModel: Codable, Equatable {
     public let location: LocationModel
     public let current: CurrentModel
     public let forecast: ForecastModel
+    
     public static func == (lhs: WeatherModel, rhs: WeatherModel) -> Bool {
         lhs.location.id == rhs.location.id &&
             lhs.current.lastUpdatedEpoch == rhs.current.lastUpdatedEpoch
