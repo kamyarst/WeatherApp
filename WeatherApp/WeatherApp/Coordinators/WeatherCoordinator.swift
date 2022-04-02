@@ -16,8 +16,10 @@ final class WeatherCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .red
-        self.navigationController.pushViewController(vc, animated: false)
+        let weatherController = WeatherViewController()
+        self.navigationController.tabBarItem = .init(title: "Live",
+                                                     image: UIImage(systemName: "location.circle"),
+                                                     selectedImage: UIImage(systemName: "location.circle.fill"))
+        self.navigationController.pushViewController(weatherController, animated: false)
     }
 }
