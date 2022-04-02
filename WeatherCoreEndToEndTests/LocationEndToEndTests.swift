@@ -18,7 +18,6 @@ class LocationEndToEndTests: XCTestCase {
 
         switch result {
         case let .success(items):
-            XCTAssertFalse(items.filter { $0.name.contains(location) }.isEmpty)
             XCTAssertFalse(items.isEmpty)
 
         case let .failure(error):
@@ -33,7 +32,6 @@ class LocationEndToEndTests: XCTestCase {
 
         switch result {
         case let .success(items):
-            XCTAssertTrue(items.contains(where: { $0.latitude == geo.lat && $0.longitude == geo.lon }))
             XCTAssertFalse(items.isEmpty)
 
         case let .failure(error):
