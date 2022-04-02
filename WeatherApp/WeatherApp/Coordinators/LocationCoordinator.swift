@@ -17,7 +17,7 @@ final class LocationCoordinator: Coordinator {
 
     func start() {
         let locationController = LocationViewController()
-        self.navigationController.tabBarItem = .init(title: "Search",
+        self.navigationController.tabBarItem = .init(title: L10n.LocationController.TabBar.title,
                                                      image: UIImage(systemName: "magnifyingglass.circle"),
                                                      selectedImage: UIImage(systemName: "magnifyingglass.circle.fill"))
         self.navigationController.pushViewController(locationController, animated: false)

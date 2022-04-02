@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Kamyar on 4/2/22.
+  
+*/
+
+weatherController.tabBar.title = "Live";
+locationController.tabBar.title = "Search";
