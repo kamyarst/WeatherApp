@@ -1,3 +1,4 @@
 *.xcbkptlist
 xcschememanagement.plist
 *.xcuserstate
+./WeatherApp.xcworkspace/xcshareddata/swiftpm/Package.resolved
