@@ -11,7 +11,8 @@ final class LocationViewController: UIViewController {
 
     private(set) lazy var backgroundView: WAGradientView = {
         let view = WAGradientView()
-        view.configGradient(with: [.systemGray6, .systemGray5], .vertical)
+        let colors = [Asset.Color.gradientPrimary.color, Asset.Color.gradientAccent.color]
+        view.configGradient(with: colors, .vertical)
         return view
     }()
 
