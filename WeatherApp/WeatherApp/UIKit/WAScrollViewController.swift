@@ -9,8 +9,15 @@ import UIKit
 
 class WAScrollViewController: UIViewController {
 
-    private(set) lazy var containerView = UIView()
     private(set) lazy var scrollView = UIScrollView()
+    private(set) lazy var containerView = UIView()
+
+    private(set) lazy var containerStackView: UIStackView = {
+        let view = UIStackView()
+        view.spacing = WAConstant.Margin.standard.value
+        view.axis = .vertical
+        return view
+    }()
 
     override func loadView() {
         super.loadView()
@@ -38,6 +45,14 @@ class WAScrollViewController: UIViewController {
         self.containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalTo(self.view)
+        }
+    }
+
+    private func setupContainerStackView() {
+
+        self.containerView.addSubview(self.containerStackView)
+        self.containerStackView.snp.makeConstraints { make in
+            make.center.top.left.equalToSuperview()
         }
     }
 }
