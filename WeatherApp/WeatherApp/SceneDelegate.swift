@@ -14,7 +14,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard (scene as? UIWindowScene) != nil else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: scene)
+        self.startApplication()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }
@@ -26,4 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) { }
 
     func sceneDidEnterBackground(_ scene: UIScene) { }
+
+    private func startApplication() {
+
+        let nav = UINavigationController()
+        let coordinator = MainCoordinator(navigationController: nav)
+        coordinator.start()
+
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
+    }
 }
