@@ -14,6 +14,7 @@
 		6205357027F7636100B86B6E /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205356F27F7636100B86B6E /* WeatherAppTests.swift */; };
 		6205357A27F7636100B86B6E /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205357927F7636100B86B6E /* WeatherAppUITests.swift */; };
 		6205357C27F7636100B86B6E /* WeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205357B27F7636100B86B6E /* WeatherAppUITestsLaunchTests.swift */; };
+		6205358A27F8316C00B86B6E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205358927F8316C00B86B6E /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		6205357527F7636100B86B6E /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6205357927F7636100B86B6E /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		6205357B27F7636100B86B6E /* WeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6205358927F8316C00B86B6E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				6205356127F7636100B86B6E /* Assets.xcassets */,
 				6205356327F7636100B86B6E /* LaunchScreen.storyboard */,
 				6205356627F7636100B86B6E /* Info.plist */,
+				6205358927F8316C00B86B6E /* Coordinator.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6205358A27F8316C00B86B6E /* Coordinator.swift in Sources */,
 				6205355927F7636000B86B6E /* AppDelegate.swift in Sources */,
 				6205355B27F7636000B86B6E /* SceneDelegate.swift in Sources */,
 			);
