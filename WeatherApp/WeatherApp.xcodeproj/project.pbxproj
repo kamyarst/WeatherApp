@@ -105,16 +105,10 @@
 		6205355727F7636000B86B6E /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				6205355827F7636000B86B6E /* AppDelegate.swift */,
-				6205355A27F7636000B86B6E /* SceneDelegate.swift */,
-				6205356127F7636100B86B6E /* Assets.xcassets */,
-				6205356327F7636100B86B6E /* LaunchScreen.storyboard */,
 				6205356627F7636100B86B6E /* Info.plist */,
-				6205358927F8316C00B86B6E /* Coordinator.swift */,
-				6275AC8E27F83CA1001EB1AA /* LocationCoordinator.swift */,
-				6275AC8C27F83C9B001EB1AA /* WeatherCoordinator.swift */,
-				6275AC8A27F83C91001EB1AA /* TabBarCoordinator.swift */,
-				6275AC8827F83C88001EB1AA /* MainCoordinator.swift */,
+				6205356127F7636100B86B6E /* Assets.xcassets */,
+				6275AC9027F83E10001EB1AA /* Coordinators */,
+				6275AC9127F83E22001EB1AA /* Supports */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -134,6 +128,28 @@
 				6205357B27F7636100B86B6E /* WeatherAppUITestsLaunchTests.swift */,
 			);
 			path = WeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		6275AC9027F83E10001EB1AA /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				6205358927F8316C00B86B6E /* Coordinator.swift */,
+				6275AC8E27F83CA1001EB1AA /* LocationCoordinator.swift */,
+				6275AC8C27F83C9B001EB1AA /* WeatherCoordinator.swift */,
+				6275AC8A27F83C91001EB1AA /* TabBarCoordinator.swift */,
+				6275AC8827F83C88001EB1AA /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		6275AC9127F83E22001EB1AA /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				6205355827F7636000B86B6E /* AppDelegate.swift */,
+				6205355A27F7636000B86B6E /* SceneDelegate.swift */,
+				6205356327F7636100B86B6E /* LaunchScreen.storyboard */,
+			);
+			path = Supports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
