@@ -30,6 +30,7 @@
 - SnapKit: [GitHub](https://github.com/SnapKit/SnapKit)
 
 #### Tools
+- SwiftGen: [Rules](swiftgen.yml) | [GitHub](https://github.com/SwiftGen/SwiftGen/)
 - SwiftLint: [Rules](.swiftformat) | [GitHub](https://github.com/realm/SwiftLint)
 - SwiftFormat: [Rules](.swiftlint.yml) | [GitHub](https://github.com/nicklockwood/SwiftFormat)
 
