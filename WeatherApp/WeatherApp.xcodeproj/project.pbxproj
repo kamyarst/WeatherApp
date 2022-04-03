@@ -15,6 +15,7 @@
 		6205357A27F7636100B86B6E /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205357927F7636100B86B6E /* WeatherAppUITests.swift */; };
 		6205357C27F7636100B86B6E /* WeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205357B27F7636100B86B6E /* WeatherAppUITestsLaunchTests.swift */; };
 		6205358A27F8316C00B86B6E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205358927F8316C00B86B6E /* Coordinator.swift */; };
+		62233D7D27F9FEBB0029358A /* WAFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233D7C27F9FEBB0029358A /* WAFont.swift */; };
 		623BE25427F874A70043677A /* WAGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BE25327F874A70043677A /* WAGradientView.swift */; };
 		623BE25627F874E70043677A /* WAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BE25527F874E70043677A /* WAConstant.swift */; };
 		623BE25A27F87C5F0043677A /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 623BE25927F87C5F0043677A /* Image.xcassets */; };
@@ -63,6 +64,7 @@
 		6205357927F7636100B86B6E /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		6205357B27F7636100B86B6E /* WeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6205358927F8316C00B86B6E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		62233D7C27F9FEBB0029358A /* WAFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAFont.swift; sourceTree = "<group>"; };
 		623BE25327F874A70043677A /* WAGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAGradientView.swift; sourceTree = "<group>"; };
 		623BE25527F874E70043677A /* WAConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAConstant.swift; sourceTree = "<group>"; };
 		623BE25927F87C5F0043677A /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				6275ACBE27F85FCF001EB1AA /* WAScrollViewController.swift */,
 				623BE25327F874A70043677A /* WAGradientView.swift */,
 				623BE25527F874E70043677A /* WAConstant.swift */,
+				62233D7C27F9FEBB0029358A /* WAFont.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				6275ACC127F86053001EB1AA /* WeatherViewController.swift in Sources */,
 				6275AC8927F83C88001EB1AA /* MainCoordinator.swift in Sources */,
 				6205355927F7636000B86B6E /* AppDelegate.swift in Sources */,
+				62233D7D27F9FEBB0029358A /* WAFont.swift in Sources */,
 				623BE26527F87EDC0043677A /* Localized.swift in Sources */,
 				6275AC8B27F83C91001EB1AA /* TabBarCoordinator.swift in Sources */,
 				6275ACC327F871F6001EB1AA /* LocationViewController.swift in Sources */,
