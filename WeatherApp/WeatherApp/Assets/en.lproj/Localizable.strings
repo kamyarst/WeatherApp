@@ -1,10 +1,17 @@
 /* 
-  Localizable.strings
-  WeatherApp
+ Localizable.strings
+ WeatherApp
+ 
+ Created by Kamyar on 4/2/22.
+ 
+ */
 
-  Created by Kamyar on 4/2/22.
-  
-*/
+// General
+general.wait = "Please wait...";
 
+// Weather Controller
 weatherController.tabBar.title = "Live";
+weatherController.forecast.title = "Upcoming Hours";
+
+// Location Controller
 locationController.tabBar.title = "Search";
