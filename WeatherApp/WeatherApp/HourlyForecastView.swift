@@ -14,7 +14,7 @@ final class HourlyForecastView: UIView {
     private(set) lazy var contentStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = WAConstant.Margin.small.value
+        view.spacing = WAConstant.Margin.small
         return view
     }()
 
@@ -29,7 +29,7 @@ final class HourlyForecastView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        let inset = WAConstant.Margin.small.value
+        let inset = WAConstant.Margin.small
         layout.sectionInset = .init(top: 0, left: inset, bottom: 0, right: inset)
         return layout
     }()
@@ -66,7 +66,7 @@ final class HourlyForecastView: UIView {
         self.addSubview(self.contentStackView)
         self.contentStackView.snp.makeConstraints { make in
             make.center.top.equalToSuperview()
-            make.leading.equalTo(WAConstant.Margin.standard.value)
+            make.leading.equalTo(WAConstant.Margin.standard)
         }
     }
 
@@ -74,7 +74,7 @@ final class HourlyForecastView: UIView {
 
         self.contentStackView.addArrangedSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { make in
-            let width = WAConstant.ControlHeight.big.value
+            let width = WAConstant.ControlHeight.big
             let ratio: CGFloat = 2
             make.height.equalTo(width * ratio)
         }

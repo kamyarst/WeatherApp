@@ -12,7 +12,7 @@ final class WACImageLabel: UIView {
     private(set) lazy var contentStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
-        view.spacing = WAConstant.Margin.small.value
+        view.spacing = WAConstant.Margin.small
         view.alignment = .center
         return view
     }()

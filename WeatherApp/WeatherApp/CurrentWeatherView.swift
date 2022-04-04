@@ -13,14 +13,14 @@ final class CurrentWeatherView: UIView {
         let view = UIStackView()
         view.axis = .vertical
         view.alignment = .center
-        view.spacing = WAConstant.Margin.medium.value
+        view.spacing = WAConstant.Margin.medium
         return view
     }()
 
     private(set) lazy var currentStackView: UIStackView = {
         let view = UIStackView()
         view.alignment = .center
-        view.spacing = WAConstant.Margin.medium.value
+        view.spacing = WAConstant.Margin.medium
         return view
     }()
 
@@ -70,13 +70,13 @@ final class CurrentWeatherView: UIView {
 
     private(set) lazy var trendStackView: UIStackView = {
         let view = UIStackView()
-        view.spacing = WAConstant.Margin.veryBig.value
+        view.spacing = WAConstant.Margin.veryBig
         return view
     }()
 
     private(set) lazy var lowTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
-        view.contentStackView.spacing = WAConstant.Margin.verySmall.value
+        view.contentStackView.spacing = WAConstant.Margin.verySmall
         view.titleLabel.text = "12" + UnitTemperature.celsius.symbol
         view.imageView.image = UIImage(systemName: "arrowtriangle.down.fill")
         return view
@@ -84,7 +84,7 @@ final class CurrentWeatherView: UIView {
 
     private(set) lazy var upTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
-        view.contentStackView.spacing = WAConstant.Margin.verySmall.value
+        view.contentStackView.spacing = WAConstant.Margin.verySmall
         view.titleLabel.text = "20" + UnitTemperature.celsius.symbol
         view.imageView.image = UIImage(systemName: "arrowtriangle.up.fill")
         return view

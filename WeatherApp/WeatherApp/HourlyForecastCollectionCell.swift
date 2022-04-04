@@ -12,7 +12,7 @@ final class HourlyForecastCollectionCell: UICollectionViewCell {
     private(set) lazy var contentStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.spacing = WAConstant.Margin.small.value
+        view.spacing = WAConstant.Margin.small
         view.alignment = .center
         return view
     }()
@@ -66,7 +66,7 @@ final class HourlyForecastCollectionCell: UICollectionViewCell {
         self.contentView.addSubview(self.contentStackView)
         self.contentStackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.top.leading.equalTo(WAConstant.Margin.small.value)
+            make.top.leading.equalTo(WAConstant.Margin.small)
         }
     }
 

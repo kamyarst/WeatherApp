@@ -14,7 +14,7 @@ class WAScrollViewController: UIViewController {
 
     private(set) lazy var containerStackView: UIStackView = {
         let view = UIStackView()
-        view.spacing = WAConstant.Margin.standard.value
+        view.spacing = WAConstant.Margin.standard
         view.axis = .vertical
         return view
     }()
