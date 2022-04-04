@@ -41,6 +41,9 @@
 		62E65FC827FAC44E004BDEBF /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FC727FAC44E004BDEBF /* DailyForecastView.swift */; };
 		62E65FCA27FAC476004BDEBF /* DailyForecastTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FC927FAC476004BDEBF /* DailyForecastTableCell.swift */; };
 		62E65FCC27FAC5E4004BDEBF /* WeatherViewController+SetupViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FCB27FAC5E4004BDEBF /* WeatherViewController+SetupViews.swift */; };
+		62E65FD227FAD3EB004BDEBF /* DetailWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FD127FAD3EB004BDEBF /* DetailWeatherView.swift */; };
+		62E65FD427FAD409004BDEBF /* DetailWeatherCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FD327FAD409004BDEBF /* DetailWeatherCollectionCell.swift */; };
+		62E65FD627FAD432004BDEBF /* WADynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FD527FAD432004BDEBF /* WADynamicCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +101,9 @@
 		62E65FC727FAC44E004BDEBF /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
 		62E65FC927FAC476004BDEBF /* DailyForecastTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableCell.swift; sourceTree = "<group>"; };
 		62E65FCB27FAC5E4004BDEBF /* WeatherViewController+SetupViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherViewController+SetupViews.swift"; sourceTree = "<group>"; };
+		62E65FD127FAD3EB004BDEBF /* DetailWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherView.swift; sourceTree = "<group>"; };
+		62E65FD327FAD409004BDEBF /* DetailWeatherCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherCollectionCell.swift; sourceTree = "<group>"; };
+		62E65FD527FAD432004BDEBF /* WADynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WADynamicCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +252,7 @@
 				623BE25327F874A70043677A /* WAGradientView.swift */,
 				623BE25527F874E70043677A /* WAConstant.swift */,
 				62233D7C27F9FEBB0029358A /* WAFont.swift */,
+				62E65FD527FAD432004BDEBF /* WADynamicCollectionView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -285,6 +292,8 @@
 				62E65FC727FAC44E004BDEBF /* DailyForecastView.swift */,
 				62233D8A27FA23160029358A /* HourlyForecastCollectionCell.swift */,
 				62233D8827FA22FA0029358A /* HourlyForecastView.swift */,
+				62E65FD127FAD3EB004BDEBF /* DetailWeatherView.swift */,
+				62E65FD327FAD409004BDEBF /* DetailWeatherCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -454,6 +463,7 @@
 				6205358A27F8316C00B86B6E /* Coordinator.swift in Sources */,
 				623BE26727F87F820043677A /* Assets+System.swift in Sources */,
 				623BE25427F874A70043677A /* WAGradientView.swift in Sources */,
+				62E65FD227FAD3EB004BDEBF /* DetailWeatherView.swift in Sources */,
 				62233D8427FA05810029358A /* CurrentWeatherView.swift in Sources */,
 				62233D8127FA04630029358A /* WACImageLabel.swift in Sources */,
 				6275ACC127F86053001EB1AA /* WeatherViewController.swift in Sources */,
@@ -463,11 +473,13 @@
 				6205355927F7636000B86B6E /* AppDelegate.swift in Sources */,
 				62233D7D27F9FEBB0029358A /* WAFont.swift in Sources */,
 				623BE26527F87EDC0043677A /* Localized.swift in Sources */,
+				62E65FD427FAD409004BDEBF /* DetailWeatherCollectionCell.swift in Sources */,
 				62233D8927FA22FA0029358A /* HourlyForecastView.swift in Sources */,
 				6275AC8B27F83C91001EB1AA /* TabBarCoordinator.swift in Sources */,
 				6275ACC327F871F6001EB1AA /* LocationViewController.swift in Sources */,
 				6275AC8F27F83CA1001EB1AA /* LocationCoordinator.swift in Sources */,
 				623BE26427F87EDC0043677A /* Assets.swift in Sources */,
+				62E65FD627FAD432004BDEBF /* WADynamicCollectionView.swift in Sources */,
 				62E65FCA27FAC476004BDEBF /* DailyForecastTableCell.swift in Sources */,
 				6275ACBF27F85FCF001EB1AA /* WAScrollViewController.swift in Sources */,
 				62233D8B27FA23160029358A /* HourlyForecastCollectionCell.swift in Sources */,
