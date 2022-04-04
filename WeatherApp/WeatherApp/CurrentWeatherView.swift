@@ -103,11 +103,11 @@ final class CurrentWeatherView: UIView {
 
 extension CurrentWeatherView {
 
-
     private func setupViews() {
 
         self.setupContentStackView()
         self.setupCurrentIconImageView()
+        self.contentStackView.addArrangedSubview(self.locationLabel)
         self.currentStackView.addArrangedSubview(self.currentDegreeLabel)
         self.currentStackView.addArrangedSubview(self.unitLabel)
         self.contentStackView.addArrangedSubview(self.currentStackView)
@@ -116,17 +116,16 @@ extension CurrentWeatherView {
         self.trendStackView.addArrangedSubview(self.upTrendImageLabel)
         self.contentStackView.addArrangedSubview(self.feelLikeLabel)
         self.contentStackView.addArrangedSubview(self.currentWeatherLabel)
-        self.contentStackView.addArrangedSubview(self.locationLabel)
     }
-    
+
     private func setupContentStackView() {
-        
+
         self.addSubview(self.contentStackView)
         self.contentStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
-    
+
     private func setupCurrentIconImageView() {
         self.currentStackView.addArrangedSubview(self.currentIconImageView)
         self.currentIconImageView.snp.makeConstraints { make in

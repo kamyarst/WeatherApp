@@ -27,6 +27,6 @@ final class WeatherCoordinator: Coordinator {
 
     private func setupNavigationBar() {
 
-        self.navigationController.navigationBar.prefersLargeTitles = true
+        self.navigationController.setNavigationBarHidden(true, animated: false)
     }
 }

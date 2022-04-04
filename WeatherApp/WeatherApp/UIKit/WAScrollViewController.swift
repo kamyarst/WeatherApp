@@ -29,6 +29,7 @@ class WAScrollViewController: UIViewController {
 
         self.setupScrollView()
         self.setupContainerView()
+        self.setupContainerStackView()
     }
 
     private func setupScrollView() {
@@ -52,7 +53,7 @@ class WAScrollViewController: UIViewController {
 
         self.containerView.addSubview(self.containerStackView)
         self.containerStackView.snp.makeConstraints { make in
-            make.center.top.left.equalToSuperview()
+            make.centerX.topMargin.bottomMargin.leading.equalToSuperview()
         }
     }
 }
