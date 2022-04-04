@@ -13,11 +13,11 @@ extension WeatherViewController {
 
         self.setupRefreshControl()
         self.setupBackgroundView()
-        self.containerStackView.addArrangedSubview(self.titleLabel)
         self.containerStackView.addArrangedSubview(self.currentWeatherView)
         self.appendSeparator()
         self.containerStackView.addArrangedSubview(self.hourlyForecastView)
         self.containerStackView.addArrangedSubview(self.dailyForecastView)
+        self.containerStackView.addArrangedSubview(self.detailWeatherView)
     }
 
     private func setupRefreshControl() {

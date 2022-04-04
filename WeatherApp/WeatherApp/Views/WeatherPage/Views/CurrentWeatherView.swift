@@ -63,7 +63,8 @@ final class CurrentWeatherView: UIView {
 
     private(set) lazy var locationLabel: UILabel = {
         let view = UILabel()
-        view.textColor = .lightText
+        view.textColor = .white
+        view.font = WAFont.dynamicFont(.bold, .largeTitle)
         view.text = "London"
         return view
     }()

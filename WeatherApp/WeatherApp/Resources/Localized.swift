@@ -24,9 +24,13 @@ internal enum L10n {
   }
 
   internal enum WeatherController {
-    internal enum Forecast {
+    internal enum DailyForecast {
+      /// Upcoming Days
+      internal static let title = L10n.tr("Localizable", "weatherController.dailyForecast.title")
+    }
+    internal enum HourlyForecast {
       /// Upcoming Hours
-      internal static let title = L10n.tr("Localizable", "weatherController.forecast.title")
+      internal static let title = L10n.tr("Localizable", "weatherController.hourlyForecast.title")
     }
     internal enum TabBar {
       /// Live

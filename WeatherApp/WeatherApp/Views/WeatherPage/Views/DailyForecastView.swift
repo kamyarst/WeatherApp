@@ -21,7 +21,7 @@ final class DailyForecastView: UIView {
     private(set) lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .lightText
-        view.text = L10n.WeatherController.Forecast.title
+        view.text = L10n.WeatherController.DailyForecast.title
         return view
     }()
 

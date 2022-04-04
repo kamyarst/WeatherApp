@@ -32,14 +32,6 @@ final class WeatherViewController: WAScrollViewController {
         return view
     }()
 
-    private(set) lazy var titleLabel: UILabel = {
-        let view = UILabel()
-        view.textColor = .white
-        view.font = WAFont.dynamicFont(.bold, .largeTitle)
-        view.text = "   Hello"
-        return view
-    }()
-
     private(set) lazy var currentWeatherView: CurrentWeatherView = {
         let view = CurrentWeatherView()
         return view
@@ -53,6 +45,11 @@ final class WeatherViewController: WAScrollViewController {
     private(set) lazy var dailyForecastView: DailyForecastView = {
         let view = DailyForecastView()
         view.backgroundColor = .white.withAlphaComponent(0.15)
+        return view
+    }()
+
+    private(set) lazy var detailWeatherView: DetailWeatherView = {
+        let view = DetailWeatherView()
         return view
     }()
 

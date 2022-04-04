@@ -22,11 +22,5 @@ final class WeatherCoordinator: Coordinator {
                                                      image: UIImage(systemName: "location.circle"),
                                                      selectedImage: UIImage(systemName: "location.circle.fill"))
         self.navigationController.pushViewController(weatherController, animated: false)
-        self.setupNavigationBar()
-    }
-
-    private func setupNavigationBar() {
-
-        self.navigationController.setNavigationBarHidden(true, animated: false)
     }
 }

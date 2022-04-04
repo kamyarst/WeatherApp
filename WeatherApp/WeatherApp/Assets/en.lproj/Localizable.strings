@@ -11,7 +11,9 @@ general.wait = "Please wait...";
 
 // Weather Controller
 weatherController.tabBar.title = "Live";
-weatherController.forecast.title = "Upcoming Hours";
+weatherController.hourlyForecast.title = "Upcoming Hours";
+weatherController.dailyForecast.title = "Upcoming Days";
+
 
 // Location Controller
 locationController.tabBar.title = "Search";
