@@ -37,6 +37,7 @@
 		6275ACBF27F85FCF001EB1AA /* WAScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6275ACBE27F85FCF001EB1AA /* WAScrollViewController.swift */; };
 		6275ACC127F86053001EB1AA /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6275ACC027F86053001EB1AA /* WeatherViewController.swift */; };
 		6275ACC327F871F6001EB1AA /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6275ACC227F871F6001EB1AA /* LocationViewController.swift */; };
+		62E65FC627FAB0CF004BDEBF /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FC527FAB0CF004BDEBF /* UITableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		6275ACBE27F85FCF001EB1AA /* WAScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WAScrollViewController.swift; sourceTree = "<group>"; };
 		6275ACC027F86053001EB1AA /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		6275ACC227F871F6001EB1AA /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		62E65FC527FAB0CF004BDEBF /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				62233D8527FA12DE0029358A /* UICollectionViewCell.swift */,
+				62E65FC527FAB0CF004BDEBF /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				62233D8427FA05810029358A /* CurrentWeatherView.swift in Sources */,
 				62233D8127FA04630029358A /* WACImageLabel.swift in Sources */,
 				6275ACC127F86053001EB1AA /* WeatherViewController.swift in Sources */,
+				62E65FC627FAB0CF004BDEBF /* UITableView.swift in Sources */,
 				6275AC8927F83C88001EB1AA /* MainCoordinator.swift in Sources */,
 				6205355927F7636000B86B6E /* AppDelegate.swift in Sources */,
 				62233D7D27F9FEBB0029358A /* WAFont.swift in Sources */,
