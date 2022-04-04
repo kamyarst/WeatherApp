@@ -11,6 +11,11 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
 
+  internal enum General {
+    /// Please wait...
+    internal static let wait = L10n.tr("Localizable", "general.wait")
+  }
+
   internal enum LocationController {
     internal enum TabBar {
       /// Search
@@ -19,6 +24,14 @@ internal enum L10n {
   }
 
   internal enum WeatherController {
+    internal enum DailyForecast {
+      /// Upcoming Days
+      internal static let title = L10n.tr("Localizable", "weatherController.dailyForecast.title")
+    }
+    internal enum HourlyForecast {
+      /// Upcoming Hours
+      internal static let title = L10n.tr("Localizable", "weatherController.hourlyForecast.title")
+    }
     internal enum TabBar {
       /// Live
       internal static let title = L10n.tr("Localizable", "weatherController.tabBar.title")

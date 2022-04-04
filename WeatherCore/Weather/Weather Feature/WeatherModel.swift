@@ -12,7 +12,7 @@ public struct WeatherModel: Codable, Equatable {
     public let location: LocationModel
     public let current: CurrentModel
     public let forecast: ForecastModel
-    
+
     public static func == (lhs: WeatherModel, rhs: WeatherModel) -> Bool {
         lhs.location.id == rhs.location.id &&
             lhs.current.lastUpdatedEpoch == rhs.current.lastUpdatedEpoch

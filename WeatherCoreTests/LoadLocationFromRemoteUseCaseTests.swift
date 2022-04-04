@@ -1,4 +1,3 @@
-// swiftlint:disable force_unwrapping
 //
 //  LoadLocationFromRemoteUseCaseTests.swift
 //  WeatherAppTests

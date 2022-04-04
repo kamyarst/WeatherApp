@@ -16,6 +16,7 @@ final class WeatherCoordinator: Coordinator {
     }
 
     func start() {
+
         let weatherController = WeatherViewController()
         self.navigationController.tabBarItem = .init(title: L10n.WeatherController.TabBar.title,
                                                      image: UIImage(systemName: "location.circle"),

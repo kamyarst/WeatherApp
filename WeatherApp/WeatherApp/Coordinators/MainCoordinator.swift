@@ -13,10 +13,16 @@ final class MainCoordinator: Coordinator {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.setupNavigationBar()
     }
 
     func start() {
         self.presentTabBarController()
+    }
+
+    private func setupNavigationBar() {
+
+        self.navigationController.setNavigationBarHidden(true, animated: false)
     }
 
     private func presentTabBarController() {

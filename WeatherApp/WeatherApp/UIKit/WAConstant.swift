@@ -9,27 +9,29 @@ import UIKit
 
 struct WAConstant {
 
-    enum Margin: Int {
-        case verySmall = 1
-        case small = 2
-        case medium = 3
-        case standard = 4
-        case big = 5
-        case veryBig = 6
-
-        var value: CGFloat {
-            CGFloat(self.rawValue * 4)
-        }
+    enum Margin {
+        /// 4
+        static var verySmall: CGFloat = 4
+        /// 8
+        static var small: CGFloat = 8
+        /// 12
+        static var medium: CGFloat = 12
+        /// 16
+        static var standard: CGFloat = 16
+        /// 20
+        static var big: CGFloat = 20
+        /// 24
+        static var veryBig: CGFloat = 24
     }
 
-    enum ControlHeight: Int {
-        case verySmall = 6
-        case small = 10
-        case medium = 11
-        case big = 12
-
-        var value: CGFloat {
-            CGFloat(self.rawValue * 4)
-        }
+    enum ControlHeight {
+        /// 24
+        static var verySmall: CGFloat = 24
+        /// 40
+        static var small: CGFloat = 40
+        /// 44
+        static var medium: CGFloat = 44
+        /// 48
+        static var big: CGFloat = 48
     }
 }
