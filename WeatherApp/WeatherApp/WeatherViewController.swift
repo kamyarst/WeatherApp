@@ -50,6 +50,12 @@ final class WeatherViewController: WAScrollViewController {
         return view
     }()
 
+    private(set) lazy var dailyForecastView: DailyForecastView = {
+        let view = DailyForecastView()
+        view.backgroundColor = .white.withAlphaComponent(0.15)
+        return view
+    }()
+
     // MARK: - View Lifecycles
 
     override func loadView() {
@@ -86,6 +92,7 @@ extension WeatherViewController {
         self.containerStackView.addArrangedSubview(self.currentWeatherView)
         self.appendSeparator()
         self.containerStackView.addArrangedSubview(self.hourlyForecastView)
+        self.containerStackView.addArrangedSubview(self.dailyForecastView)
     }
 
     private func setupRefreshControl() {
@@ -109,6 +116,4 @@ extension WeatherViewController {
             make.height.equalTo(1)
         }
     }
-}
-
 }
