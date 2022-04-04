@@ -1,5 +1,5 @@
 //
-//  ForecastView.swift
+//  HourlyForecastView.swift
 //  WeatherApp
 //
 //  Created by Kamyar on 4/3/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ForecastView: UIView {
+final class HourlyForecastView: UIView {
 
     private typealias CellType = ForecastCollectionCell
 
@@ -83,7 +83,7 @@ final class ForecastView: UIView {
 
 // MARK: UICollectionViewDataSource
 
-extension ForecastView: UICollectionViewDataSource {
+extension HourlyForecastView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         10

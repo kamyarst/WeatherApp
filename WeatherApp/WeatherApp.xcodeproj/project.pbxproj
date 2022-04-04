@@ -19,7 +19,7 @@
 		62233D8127FA04630029358A /* WACImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233D8027FA04630029358A /* WACImageLabel.swift */; };
 		62233D8427FA05810029358A /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233D8327FA05810029358A /* CurrentWeatherView.swift */; };
 		62233D8627FA12DE0029358A /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233D8527FA12DE0029358A /* UICollectionViewCell.swift */; };
-		62233D8927FA22FA0029358A /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233D8827FA22FA0029358A /* ForecastView.swift */; };
+		62233D8927FA22FA0029358A /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233D8827FA22FA0029358A /* HourlyForecastView.swift */; };
 		62233D8B27FA23160029358A /* ForecastCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62233D8A27FA23160029358A /* ForecastCollectionCell.swift */; };
 		623BE25427F874A70043677A /* WAGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BE25327F874A70043677A /* WAGradientView.swift */; };
 		623BE25627F874E70043677A /* WAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BE25527F874E70043677A /* WAConstant.swift */; };
@@ -73,7 +73,7 @@
 		62233D8027FA04630029358A /* WACImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WACImageLabel.swift; sourceTree = "<group>"; };
 		62233D8327FA05810029358A /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		62233D8527FA12DE0029358A /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
-		62233D8827FA22FA0029358A /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
+		62233D8827FA22FA0029358A /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
 		62233D8A27FA23160029358A /* ForecastCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionCell.swift; sourceTree = "<group>"; };
 		623BE25327F874A70043677A /* WAGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAGradientView.swift; sourceTree = "<group>"; };
 		623BE25527F874E70043677A /* WAConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAConstant.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				62233D8227FA04830029358A /* UIComponents */,
 				62233D8327FA05810029358A /* CurrentWeatherView.swift */,
 				62233D8727FA12E20029358A /* Extensions */,
-				62233D8827FA22FA0029358A /* ForecastView.swift */,
+				62233D8827FA22FA0029358A /* HourlyForecastView.swift */,
 				62233D8A27FA23160029358A /* ForecastCollectionCell.swift */,
 			);
 			path = WeatherApp;
@@ -417,7 +417,7 @@
 				6205355927F7636000B86B6E /* AppDelegate.swift in Sources */,
 				62233D7D27F9FEBB0029358A /* WAFont.swift in Sources */,
 				623BE26527F87EDC0043677A /* Localized.swift in Sources */,
-				62233D8927FA22FA0029358A /* ForecastView.swift in Sources */,
+				62233D8927FA22FA0029358A /* HourlyForecastView.swift in Sources */,
 				6275AC8B27F83C91001EB1AA /* TabBarCoordinator.swift in Sources */,
 				6275ACC327F871F6001EB1AA /* LocationViewController.swift in Sources */,
 				6275AC8F27F83CA1001EB1AA /* LocationCoordinator.swift in Sources */,
