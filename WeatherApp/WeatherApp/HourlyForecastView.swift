@@ -9,7 +9,7 @@ import UIKit
 
 final class HourlyForecastView: UIView {
 
-    private typealias CellType = ForecastCollectionCell
+    private typealias CellType = HourlyForecastCollectionCell
 
     private(set) lazy var contentStackView: UIStackView = {
         let view = UIStackView()

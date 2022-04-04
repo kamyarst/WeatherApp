@@ -1,5 +1,5 @@
 //
-//  ForecastCollectionCell.swift
+//  HourlyForecastCollectionCell.swift
 //  WeatherApp
 //
 //  Created by Kamyar on 4/3/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ForecastCollectionCell: UICollectionViewCell {
+final class HourlyForecastCollectionCell: UICollectionViewCell {
 
     private(set) lazy var contentStackView: UIStackView = {
         let view = UIStackView()
