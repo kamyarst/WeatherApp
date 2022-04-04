@@ -1,4 +1,5 @@
-// swiftllint:disable force_unwrapping
+// swiftlint:disable force_unwrapping
+//
 //  HTTPClientSpy.swift
 //  WeatherAppTests
 //
