@@ -16,7 +16,7 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
         let (sut, client) = self.makeSUT(url: url)
 
         client.setURL(url)
-        _ = await sut.load()
+        _ = try? await sut.load()
 
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -26,10 +26,9 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
         let (sut, client) = self.makeSUT(url: url)
 
         client.setURL(url)
-        _ = await sut.load()
+        _ = try? await sut.load()
         client.setURL(url)
-        _ = await sut.load()
-
+        _ = try? await sut.load()
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
 
@@ -37,7 +36,7 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
         let url = anyURL()
         let (sut, client) = self.makeSUT(url: url)
 
-        await self.expect(sut, completeWith: .failure(HTTPError.connectivity)) {
+        await self.expect(sut, completeWith: .connectivity) {
             client.setURL(url)
             client.setError(.connectivity)
         }
@@ -50,7 +49,7 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
         let codes = [199, 201, 300, 400, 500]
         for (index, code) in codes.enumerated() {
             let json = self.makeItemJson(["": ""])
-            await self.expect(sut, completeWith: .failure(HTTPError.invalidData)) {
+            await self.expect(sut, completeWith: .invalidData) {
                 client.setURL(url)
                 client.setResponse(code, data: json, at: index)
             }
@@ -61,7 +60,7 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
         let (sut, client) = self.makeSUT()
 
         let data = Data("Invalid json".utf8)
-        await self.expect(sut, completeWith: .failure(HTTPError.invalidData)) {
+        await self.expect(sut, completeWith: .invalidData) {
             client.setURL()
             client.setResponse(200, data: data)
         }
@@ -95,7 +94,7 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
 
         let weather = self.makeWeather(location: location, current: current, forecastDay: forecastDay)
 
-        await self.expect(sut, completeWith: .success(weather.model)) {
+        await self.expect(sut, completeWith: weather.model) {
             let json = makeItemJson(weather.json)
             client.setURL()
             client.setResponse(200, data: json)
@@ -120,7 +119,7 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
 
         let item = WeatherModel(location: location.model, current: current.model,
                                 forecast: .init(forecastday: [forecastDay.model]))
-            let forcastDayJson = ["forecastday": [forecastDay.json]]
+        let forcastDayJson = ["forecastday": [forecastDay.json]]
         let json = ["location": location.json,
                     "current": current.json,
                     "forecast": forcastDayJson] as [String: Any]
@@ -261,23 +260,33 @@ class LoadWeatherFromRemoteUseCaseTests: XCTestCase {
         return data ?? Data()
     }
 
-    private func expect(_ sut: RemoteWeatherLoader, completeWith expectedResult: HTTPResult<WeatherModel>,
+    private func expect(_ sut: RemoteWeatherLoader, completeWith expectedError: HTTPError,
                         file: StaticString = #filePath, line: UInt = #line,
                         when action: () -> Void) async {
 
         action()
-        let receivedResult = await sut.load()
 
-        switch (receivedResult, expectedResult) {
-        case let (.success(receivedItems), .success(expectedItems)):
-            XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
-
-        case let (.failure(receivedError as HTTPError), .failure(expectedError as HTTPError)):
+        do {
+            _ = try await sut.load()
+            XCTFail("Expected result \(expectedError)", file: file, line: line)
+        } catch let receivedError as HTTPError {
             XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+        } catch {
+            XCTFail("Expected result \(error)", file: file, line: line)
+        }
+    }
 
-        default:
-            XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file,
-                    line: line)
+    private func expect(_ sut: RemoteWeatherLoader, completeWith object: WeatherModel,
+                        file: StaticString = #filePath, line: UInt = #line,
+                        when action: () -> Void) async {
+
+        action()
+
+        do {
+            let receivedResult = try await sut.load()
+            XCTAssertEqual(receivedResult, object, file: file, line: line)
+        } catch {
+            XCTFail("Expected result \(object)", file: file, line: line)
         }
     }
 }

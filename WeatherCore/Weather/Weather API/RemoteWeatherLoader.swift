@@ -9,7 +9,7 @@
 import Foundation
 
 protocol WeatherLoader {
-    func load() async -> Result<WeatherModel, Error>
+    func load() async throws -> WeatherModel
 }
 
 public class RemoteWeatherLoader: WeatherLoader {
@@ -22,21 +22,14 @@ public class RemoteWeatherLoader: WeatherLoader {
         self.client = client
     }
 
-    public func load() async -> Result<WeatherModel, Error> {
+    public func load() async throws -> WeatherModel {
 
-        let result = await self.client.get(from: self.url)
-        switch result {
-        case let .success((data, response)):
-
-            if response.statusCode == 200,
-               let json = try? JSONDecoder().decode(WeatherModel.self, from: data) {
-                return .success(json)
-            } else {
-                return .failure(HTTPError.invalidData)
-            }
-
-        case let .failure(error):
-            return .failure(error)
+        let result = try await self.client.get(from: self.url)
+        if result.response.statusCode == 200,
+           let json = try? JSONDecoder().decode(WeatherModel.self, from: result.data) {
+            return json
+        } else {
+            throw HTTPError.invalidData
         }
     }
 }
