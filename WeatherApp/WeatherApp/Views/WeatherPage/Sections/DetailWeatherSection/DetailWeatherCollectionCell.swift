@@ -18,12 +18,14 @@ final class DetailWeatherCollectionCell: UICollectionViewCell {
     private(set) lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .lightText
+        view.font = WAFont.dynamicFont(.medium, .footnote)
         return view
     }()
 
     private(set) lazy var subtitleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .white
+        view.font = WAFont.dynamicFont(.semibold, .body)
         return view
     }()
 

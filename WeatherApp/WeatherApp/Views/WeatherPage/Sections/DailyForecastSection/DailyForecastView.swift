@@ -32,6 +32,7 @@ final class DailyForecastView: UIView, DiffableTableView {
         let view = UILabel()
         view.textColor = .lightText
         view.text = L10n.WeatherController.DailyForecast.title
+        view.font = WAFont.dynamicFont(.medium, .footnote)
         return view
     }()
 
@@ -72,7 +73,8 @@ final class DailyForecastView: UIView, DiffableTableView {
             cell?.lowTrendImageLabel.titleLabel.text = "\(Int(model.day.mintempC))"
             let icon = model.day.condition.code
             if let imageName = WeatherIconFactory.get(code: icon, isDay: 1) {
-                cell?.weatherImageView.image = UIImage(systemName: imageName)
+                cell?.weatherImageView.image = UIImage(systemName: imageName)?
+                    .withRenderingMode(.alwaysOriginal)
             }
             return cell
         }

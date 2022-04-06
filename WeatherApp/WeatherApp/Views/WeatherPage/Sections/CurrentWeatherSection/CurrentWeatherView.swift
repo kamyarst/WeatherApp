@@ -79,6 +79,7 @@ final class CurrentWeatherView: UIView {
         let view = UILabel()
         view.textColor = .lightText
         view.text = "-"
+        view.font = WAFont.dynamicFont(.semibold, .subheadline)
         return view
     }()
 
@@ -92,6 +93,7 @@ final class CurrentWeatherView: UIView {
         let view = WACImageLabel()
         view.contentStackView.spacing = WAConstant.Margin.verySmall
         view.titleLabel.text = "-" + UnitTemperature.celsius.symbol
+        view.titleLabel.font = WAFont.dynamicFont(.semibold, .body)
         view.imageView.image = UIImage(systemName: "arrowtriangle.down.fill")
         return view
     }()
@@ -100,6 +102,7 @@ final class CurrentWeatherView: UIView {
         let view = WACImageLabel()
         view.contentStackView.spacing = WAConstant.Margin.verySmall
         view.titleLabel.text = "-" + UnitTemperature.celsius.symbol
+        view.titleLabel.font = WAFont.dynamicFont(.semibold, .body)
         view.imageView.image = UIImage(systemName: "arrowtriangle.up.fill")
         return view
     }()
