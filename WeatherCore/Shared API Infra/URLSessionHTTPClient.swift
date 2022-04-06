@@ -15,15 +15,15 @@ public class URLSessionHTTPClient: HTTPClient {
         self.session = session
     }
 
-    public func get(from url: URL) async -> HTTPResult<(Data, HTTPURLResponse)> {
-        await withCheckedContinuation { continuation in
+    public func get(from url: URL) async throws -> (data: Data, response: HTTPURLResponse) {
+        try await withCheckedThrowingContinuation { continuation in
             self.session.dataTask(with: url) { data, response, error in
                 if let error = error {
-                    continuation.resume(returning: .failure(error))
+                    continuation.resume(throwing: error)
                 } else if let data = data, let response = response as? HTTPURLResponse {
-                    continuation.resume(returning: .success((data, response)))
+                    continuation.resume(returning: (data, response))
                 } else {
-                    continuation.resume(returning: .failure(HTTPError.unexpected))
+                    continuation.resume(throwing: HTTPError.unexpected)
                 }
             }.resume()
         }

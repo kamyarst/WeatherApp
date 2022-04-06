@@ -23,6 +23,17 @@ internal enum L10n {
     }
   }
 
+  internal enum Weather {
+    /// Feels like %d
+    internal static func feelsLike(_ p1: Int) -> String {
+      return L10n.tr("Localizable", "weather.feelsLike", p1)
+    }
+    /// Sunrise
+    internal static let sunrise = L10n.tr("Localizable", "weather.sunrise")
+    /// Sunset
+    internal static let sunset = L10n.tr("Localizable", "weather.sunset")
+  }
+
   internal enum WeatherController {
     internal enum DailyForecast {
       /// Upcoming Days

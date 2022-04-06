@@ -24,6 +24,10 @@
 		62604B1227E8D50A006A574B /* LocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1127E8D50A006A574B /* LocationLoader.swift */; };
 		62604B1427E8D8D7006A574B /* RemoteLocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */; };
 		62604B1627E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */; };
+		627DF14527FCE059005BD42C /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627DF14427FCE059005BD42C /* Mock.swift */; };
+		62C39AC227FE07F700B8D1FB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C39AC127FE07F700B8D1FB /* Endpoint.swift */; };
+		62E65FDD27FADFCA004BDEBF /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FDC27FADFCA004BDEBF /* WeatherRepository.swift */; };
+		62E65FDF27FADFE9004BDEBF /* WeatherRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FDE27FADFE9004BDEBF /* WeatherRepositoryTests.swift */; };
 		62FB58B827F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FB58B727F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift */; };
 		62FB58BA27F1A9A100837786 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FB58B927F1A9A100837786 /* HTTPClientSpy.swift */; };
 		62FB58BD27F1F3FA00837786 /* WeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FB58BC27F1F3FA00837786 /* WeatherEndpoint.swift */; };
@@ -66,6 +70,10 @@
 		62604B1127E8D50A006A574B /* LocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLoader.swift; sourceTree = "<group>"; };
 		62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLocationLoader.swift; sourceTree = "<group>"; };
 		62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
+		627DF14427FCE059005BD42C /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		62C39AC127FE07F700B8D1FB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		62E65FDC27FADFCA004BDEBF /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
+		62E65FDE27FADFE9004BDEBF /* WeatherRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryTests.swift; sourceTree = "<group>"; };
 		62FB58B727F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWeatherFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		62FB58B927F1A9A100837786 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		62FB58BC27F1F3FA00837786 /* WeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndpoint.swift; sourceTree = "<group>"; };
@@ -140,6 +148,7 @@
 				622AF70127EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift */,
 				622AF70227EF1D7C0042693B /* SharedTestsHelpers.swift */,
 				62FB58B927F1A9A100837786 /* HTTPClientSpy.swift */,
+				627DF14427FCE059005BD42C /* Mock.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -157,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				622AF71527EF7A240042693B /* URL.swift */,
+				62C39AC127FE07F700B8D1FB /* Endpoint.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -201,6 +211,7 @@
 				62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */,
 				622AF6F527EE17AF0042693B /* URLSessionHTTPClientTests.swift */,
 				62FB58B727F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift */,
+				62E65FDE27FADFE9004BDEBF /* WeatherRepositoryTests.swift */,
 			);
 			path = WeatherCoreTests;
 			sourceTree = "<group>";
@@ -228,6 +239,7 @@
 			children = (
 				62FB58BF27F1F60200837786 /* RemoteWeatherLoader.swift */,
 				62FB58BC27F1F3FA00837786 /* WeatherEndpoint.swift */,
+				62E65FDC27FADFCA004BDEBF /* WeatherRepository.swift */,
 			);
 			path = "Weather API";
 			sourceTree = "<group>";
@@ -413,9 +425,11 @@
 				62604B1227E8D50A006A574B /* LocationLoader.swift in Sources */,
 				622AF6FC27EF19DB0042693B /* HTTPClient.swift in Sources */,
 				62FB58BD27F1F3FA00837786 /* WeatherEndpoint.swift in Sources */,
+				62C39AC227FE07F700B8D1FB /* Endpoint.swift in Sources */,
 				622AF6FE27EF19DB0042693B /* URLSessionHTTPClient.swift in Sources */,
 				622AF71927EF7F4B0042693B /* LocationEndpoint.swift in Sources */,
 				622AF71627EF7A240042693B /* URL.swift in Sources */,
+				62E65FDD27FADFCA004BDEBF /* WeatherRepository.swift in Sources */,
 				62604B1427E8D8D7006A574B /* RemoteLocationLoader.swift in Sources */,
 				62604B1027E8D382006A574B /* LocationModel.swift in Sources */,
 				62604AF127E8B9CB006A574B /* WeatherCore.docc in Sources */,
@@ -428,12 +442,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E65FDF27FADFE9004BDEBF /* WeatherRepositoryTests.swift in Sources */,
 				622AF70427EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
 				62FB58BA27F1A9A100837786 /* HTTPClientSpy.swift in Sources */,
 				62604B1627E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift in Sources */,
 				62FB58B827F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift in Sources */,
 				622AF70527EF1D7C0042693B /* SharedTestsHelpers.swift in Sources */,
 				622AF6F627EE17AF0042693B /* URLSessionHTTPClientTests.swift in Sources */,
+				627DF14527FCE059005BD42C /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

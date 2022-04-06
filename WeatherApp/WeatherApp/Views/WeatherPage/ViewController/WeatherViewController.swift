@@ -5,13 +5,18 @@
 //  Created by Kamyar on 4/2/22.
 //
 
+import Combine
 import UIKit
 
 final class WeatherViewController: WAScrollViewController {
 
     // MARK: - Constants
 
+    private var bag = Set<AnyCancellable>()
+
     // MARK: - Logical Variables
+
+    private let viewModel = WeatherViewModel()
 
     // MARK: - UI Variables
 
@@ -61,20 +66,87 @@ final class WeatherViewController: WAScrollViewController {
         self.setupViews()
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.bindState()
+        self.bindViewModel()
+        self.viewModel.getWeatherFromLocation()
+    }
+
     // MARK: - Binders
 
-    // MARK: - Validation Checks
+    private func bindViewModel() {
 
-    // MARK: - UI Configurations
+        self.viewModel.$weatherModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self = self, let model = model else { return }
+                self.currentWeatherView.locationLabel.text = model.location.name
+                self.currentWeatherView.regionLabel.text = (model.location.region ?? "") +
+                    ", " +
+                    (model.location.country ?? "")
+                self.currentWeatherView.currentDegreeLabel.text = "\(Int(model.current.tempC))"
+                self.currentWeatherView.currentWeatherLabel.text = model.current.condition.text
+                self.currentWeatherView.feelLikeLabel.text = L10n.Weather
+                    .feelsLike(Int(model.current.feelslikeC))
+                self.currentWeatherView.upTrendImageLabel.titleLabel
+                    .text = "\(Int(model.forecast.forecastday.first?.day.maxtempC ?? 0))"
+                self.currentWeatherView.lowTrendImageLabel.titleLabel
+                    .text = "\(Int(model.forecast.forecastday.first?.day.mintempC ?? 0))"
+                let icon = model.current.condition.code
+                if let imageName = WeatherIconFactory.get(code: icon, isDay: model.current.isDay) {
+                    self.currentWeatherView.currentIconImageView.image = UIImage(systemName: imageName)
+                }
+            }
+            .store(in: &self.bag)
 
-    // MARK: - Functions
+        self.viewModel.$weatherModel
+            .compactMap { $0?.forecast.forecastday.first?.hour }
+            .compactMap { $0.filter { Date(string: $0.time) >= Date() } }
+            .sink { model in
+                self.hourlyForecastView.updateSnapshot(with: model)
+            }
+            .store(in: &self.bag)
+
+        self.viewModel.$weatherModel
+            .compactMap { $0?.forecast.forecastday }
+            .sink { model in
+                self.dailyForecastView.updateSnapshot(with: model)
+            }
+            .store(in: &self.bag)
+
+        self.viewModel.$weatherModel
+            .compactMap { $0 }
+            .compactMap { DetailWeatherFactory.create(from: $0) }
+            .sink { model in
+                self.detailWeatherView.updateSnapshot(with: model)
+            }.store(in: &self.bag)
+    }
+
+    private func bindState() {
+
+        self.viewModel.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .success, .failed:
+                    self.refreshControl.endRefreshing()
+
+                case .loading:
+                    self.refreshControl.beginRefreshing()
+                    self.scrollView.setContentOffset(CGPoint(x: 0, y: -100),
+                                                     animated: true)
+                }
+            }
+            .store(in: &self.bag)
+    }
 
     // MARK: - Targets
 
     @objc private func refreshDidBegin() {
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.refreshControl.endRefreshing()
-        }
+        self.viewModel.getWeatherFromLocation()
     }
 }

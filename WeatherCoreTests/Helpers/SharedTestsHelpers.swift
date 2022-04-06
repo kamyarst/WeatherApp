@@ -25,3 +25,7 @@ extension HTTPURLResponse {
         self.init(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
     }
 }
+
+func anyKey() -> String {
+    "66a6dc4a010e4e91919132456222101" // This key is invalid at weatherapi.com
+}

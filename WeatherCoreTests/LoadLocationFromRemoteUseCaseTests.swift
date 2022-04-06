@@ -10,12 +10,12 @@ import XCTest
 
 final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
 
-    func test_load_requestFromURL() async {
+    func test_load_requestFromURL() async throws {
         let url = anyURL()
         let (sut, client) = self.makeSUT(url: url)
 
         client.setURL(url)
-        _ = await sut.load()
+        _ = try? await sut.load()
 
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -25,10 +25,9 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
         let (sut, client) = self.makeSUT(url: url)
 
         client.setURL(url)
-        _ = await sut.load()
+        _ = try? await sut.load()
         client.setURL(url)
-        _ = await sut.load()
-
+        _ = try? await sut.load()
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
 
@@ -36,7 +35,7 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
         let url = anyURL()
         let (sut, client) = self.makeSUT(url: url)
 
-        await self.expect(sut, completeWith: .failure(HTTPError.connectivity)) {
+        await self.expect(sut, completeWith: .connectivity) {
             client.setURL(url)
             client.setError(.connectivity)
         }
@@ -49,7 +48,7 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
         let codes = [199, 201, 300, 400, 500]
         for (index, code) in codes.enumerated() {
             let json = self.makeItemJson([])
-            await self.expect(sut, completeWith: .failure(HTTPError.invalidData)) {
+            await self.expect(sut, completeWith: .invalidData) {
                 client.setURL(url)
                 client.setResponse(code, data: json, at: index)
             }
@@ -60,7 +59,7 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
         let (sut, client) = self.makeSUT()
 
         let data = Data("Invalid json".utf8)
-        await self.expect(sut, completeWith: .failure(HTTPError.invalidData)) {
+        await self.expect(sut, completeWith: .invalidData) {
             client.setURL()
             client.setResponse(200, data: data)
         }
@@ -69,7 +68,7 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversNoItem200EmptyJson() async {
         let (sut, client) = self.makeSUT()
 
-        await self.expect(sut, completeWith: .success([])) {
+        await self.expect(sut, completeWith: []) {
             let data = makeItemJson([])
             client.setURL()
             client.setResponse(200, data: data)
@@ -87,7 +86,7 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
 
         let jsonObjects = [item1.json, item2.json]
 
-        await self.expect(sut, completeWith: .success([item1.model, item2.model])) {
+        await self.expect(sut, completeWith: [item1.model, item2.model]) {
             let json = makeItemJson(jsonObjects)
             client.setURL()
             client.setResponse(200, data: json)
@@ -129,22 +128,33 @@ final class LoadLocationFromRemoteUseCaseTests: XCTestCase {
         return data ?? Data()
     }
 
-    private func expect(_ sut: RemoteLocationLoader, completeWith expectedResult: HTTPResult<[LocationModel]>,
+    private func expect(_ sut: RemoteLocationLoader, completeWith expectedError: HTTPError,
                         file: StaticString = #filePath, line: UInt = #line,
                         when action: () -> Void) async {
 
         action()
-        let receivedResult = await sut.load()
 
-        switch (receivedResult, expectedResult) {
-        case let (.success(receivedItems), .success(expectedItems)):
-            XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
-
-        case let (.failure(receivedError as HTTPError), .failure(expectedError as HTTPError)):
+        do {
+            _ = try await sut.load()
+            XCTFail("Expected result \(expectedError)", file: file, line: line)
+        } catch let receivedError as HTTPError {
             XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+        } catch {
+            XCTFail("Expected result \(error)", file: file, line: line)
+        }
+    }
 
-        default:
-            XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+    private func expect(_ sut: RemoteLocationLoader, completeWith object: [LocationModel],
+                        file: StaticString = #filePath, line: UInt = #line,
+                        when action: () -> Void) async {
+
+        action()
+
+        do {
+            let receivedResult = try await sut.load()
+            XCTAssertEqual(receivedResult, object, file: file, line: line)
+        } catch {
+            XCTFail("Expected result \(object)", file: file, line: line)
         }
     }
 }

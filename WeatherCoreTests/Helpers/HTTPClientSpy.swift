@@ -12,14 +12,21 @@ import WeatherCore
 
 class HTTPClientSpy: HTTPClient {
 
-    private var completions = [(url: URL, result: HTTPResult<(Data, HTTPURLResponse)>)]()
+    private var completions = [(url: URL, result: Result<(Data, HTTPURLResponse), Error>)]()
 
     var requestedURLs: [URL] {
         self.completions.map { $0.url }
     }
 
-    func get(from url: URL) async -> HTTPResult<(Data, HTTPURLResponse)> {
-        self.completions.last!.result
+    func get(from url: URL) async throws -> (data: Data, response: HTTPURLResponse) {
+        let result = self.completions.last!.result
+        switch result {
+        case let .success(success):
+            return success
+
+        case let .failure(error):
+            throw error
+        }
     }
 
     func setURL(_ url: URL = anyURL()) {
