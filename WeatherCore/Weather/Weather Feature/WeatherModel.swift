@@ -63,7 +63,7 @@ public struct CurrentModel: Codable {
 
 // MARK: - ConditionModel
 
-public struct ConditionModel: Codable {
+public struct ConditionModel: Codable, Hashable {
 
     public let text, icon: String
     public let code: Int
@@ -88,7 +88,7 @@ public struct ForecastModel: Codable {
 
 // MARK: - ForecastDayModel
 
-public struct ForecastDayModel: Codable {
+public struct ForecastDayModel: Codable, Hashable {
 
     public let date: String
     public let dateEpoch: Int
@@ -113,7 +113,7 @@ public struct ForecastDayModel: Codable {
 
 // MARK: - AstroModel
 
-public struct AstroModel: Codable {
+public struct AstroModel: Codable, Hashable {
 
     public let sunrise, sunset: String
 
@@ -130,7 +130,7 @@ public struct AstroModel: Codable {
 
 // MARK: - DayModel
 
-public struct DayModel: Codable {
+public struct DayModel: Codable, Hashable {
 
     public let maxtempC, maxtempF: Double
     public let mintempC, mintempF: Double
@@ -173,7 +173,7 @@ public struct DayModel: Codable {
 
 // MARK: - HourModel
 
-public struct HourModel: Codable {
+public struct HourModel: Codable, Hashable {
 
     public let timeEpoch: Int
     public let time: String
@@ -214,5 +214,9 @@ public struct HourModel: Codable {
         case chanceOfRain = "chance_of_rain"
         case willItSnow = "will_it_snow"
         case chanceOfSnow = "chance_of_snow"
+    }
+
+    public static func == (lhs: HourModel, rhs: HourModel) -> Bool {
+        lhs.timeEpoch == rhs.timeEpoch
     }
 }
