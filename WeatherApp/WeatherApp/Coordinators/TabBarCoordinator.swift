@@ -21,7 +21,7 @@ final class TabBarCoordinator: Coordinator {
         self.children.forEach { $0.start() }
         tabBarController.modalPresentationStyle = .fullScreen
         tabBarController.tabBar.tintColor = .white
-        tabBarController.tabBar.unselectedItemTintColor = .systemGray3
+        tabBarController.tabBar.unselectedItemTintColor = .lightGray
         tabBarController.modalTransitionStyle = .coverVertical
         self.navigationController.pushViewController(tabBarController, animated: true)
     }

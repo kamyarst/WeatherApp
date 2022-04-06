@@ -21,6 +21,7 @@ final class DailyForecastTableCell: UITableViewCell {
     private(set) lazy var dateLabel: UILabel = {
         let view = UILabel()
         view.textColor = .white
+        view.font = WAFont.dynamicFont(.semibold, .body)
         return view
     }()
 
@@ -34,6 +35,7 @@ final class DailyForecastTableCell: UITableViewCell {
     private(set) lazy var lowTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
         view.contentStackView.spacing = .zero
+        view.titleLabel.font = WAFont.dynamicFont(.semibold, .body)
         view.imageView.image = UIImage(systemName: "chevron.down")
         return view
     }()
@@ -41,6 +43,7 @@ final class DailyForecastTableCell: UITableViewCell {
     private(set) lazy var upTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
         view.contentStackView.spacing = .zero
+        view.titleLabel.font = WAFont.dynamicFont(.semibold, .body)
         view.imageView.image = UIImage(systemName: "chevron.up")
         return view
     }()

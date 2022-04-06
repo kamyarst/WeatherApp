@@ -96,7 +96,8 @@ final class WeatherViewController: WAScrollViewController {
                     .text = "\(Int(model.forecast.forecastday.first?.day.mintempC ?? 0))"
                 let icon = model.current.condition.code
                 if let imageName = WeatherIconFactory.get(code: icon, isDay: model.current.isDay) {
-                    self.currentWeatherView.currentIconImageView.image = UIImage(systemName: imageName)
+                    self.currentWeatherView.currentIconImageView.image = UIImage(systemName: imageName)?
+                        .withRenderingMode(.alwaysOriginal)
                 }
             }
             .store(in: &self.bag)

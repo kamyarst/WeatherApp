@@ -32,6 +32,7 @@ final class HourlyForecastView: UIView, DiffableCollectionView {
         let view = UILabel()
         view.textColor = .lightText
         view.text = L10n.WeatherController.HourlyForecast.title
+        view.font = WAFont.dynamicFont(.medium, .footnote)
         return view
     }()
 
@@ -79,7 +80,8 @@ final class HourlyForecastView: UIView, DiffableCollectionView {
                 cell?.weatherLabel.text = "\(Int(model.tempC))"
                 let icon = model.condition.code
                 if let imageName = WeatherIconFactory.get(code: icon, isDay: model.isDay) {
-                    cell?.weatherImageView.image = UIImage(systemName: imageName)
+                    cell?.weatherImageView.image = UIImage(systemName: imageName)?
+                        .withRenderingMode(.alwaysOriginal)
                 }
                 return cell
         }
