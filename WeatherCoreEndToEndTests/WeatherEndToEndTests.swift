@@ -1,4 +1,3 @@
-// swiftlint:disable force_unwrapping
 //
 //  WeatherEndToEndTests.swift
 //  WeatherCoreEndToEndTests
@@ -32,9 +31,8 @@ class WeatherEndToEndTests: XCTestCase {
     private func getLocationResult(for endpoint: WeatherEndpoint,
                                    file: StaticString = #filePath,
                                    line: UInt = #line) async throws -> WeatherModel {
-        let key = "66a6dc4a010e4e91919132456222103"
-        let base = URL(string: "https://api.weatherapi.com")!
-        let url = endpoint.url(baseURL: base, key: key)
+
+        let url = endpoint.url
         let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         let loader = RemoteWeatherLoader(url: url, client: client)
         trackMemoryLeak(client, file: file, line: line)
