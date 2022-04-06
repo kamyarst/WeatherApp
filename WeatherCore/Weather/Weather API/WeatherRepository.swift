@@ -2,7 +2,7 @@
 //  WeatherRepository.swift
 //  WeatherCore
 //
-//  Created by adanic on 4/4/22.
+//  Created by Kamyar on 4/4/22.
 //  Copyright © 2022 Kamyar Sehati. All rights reserved.
 //
 

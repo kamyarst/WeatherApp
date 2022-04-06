@@ -9,7 +9,9 @@ import UIKit
 
 final class DailyForecastTableCell: UITableViewCell {
 
-    private(set) lazy var contentStackView: UIStackView = {
+    // MARK: - UI Variables
+
+    private lazy var contentStackView: UIStackView = {
         let view = UIStackView()
         view.spacing = WAConstant.Margin.small
         view.distribution = .fillEqually
@@ -19,21 +21,19 @@ final class DailyForecastTableCell: UITableViewCell {
     private(set) lazy var dateLabel: UILabel = {
         let view = UILabel()
         view.textColor = .white
-        view.text = "Saturday"
         return view
     }()
 
     private(set) lazy var weatherImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(systemName: "cloud.sun.rain.fill")?.withRenderingMode(.alwaysOriginal)
+        view.tintColor = .white
         return view
     }()
 
     private(set) lazy var lowTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
         view.contentStackView.spacing = .zero
-        view.titleLabel.text = "12"
         view.imageView.image = UIImage(systemName: "chevron.down")
         return view
     }()
@@ -41,10 +41,11 @@ final class DailyForecastTableCell: UITableViewCell {
     private(set) lazy var upTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
         view.contentStackView.spacing = .zero
-        view.titleLabel.text = "20"
         view.imageView.image = UIImage(systemName: "chevron.up")
         return view
     }()
+
+    // MARK: - View Lifecycles
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -56,7 +57,9 @@ final class DailyForecastTableCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
+extension DailyForecastTableCell {
     private func setupViews() {
 
         self.setupContentStackView()

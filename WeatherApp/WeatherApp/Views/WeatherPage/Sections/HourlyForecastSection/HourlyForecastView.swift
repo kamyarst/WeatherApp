@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import WeatherCore
 
-final class HourlyForecastView: UIView {
+final class HourlyForecastView: UIView, DiffableCollectionView {
 
+    // MARK: - Constants
+
+    typealias Entity = HourModel
     private typealias CellType = HourlyForecastCollectionCell
+
+    // MARK: - Logical Variables
+
+    lazy var datasource: DataSource = configureDataSource()
+
+    // MARK: - UI Variables
 
     private(set) lazy var contentStackView: UIStackView = {
         let view = UIStackView()
@@ -36,7 +46,6 @@ final class HourlyForecastView: UIView {
 
     private(set) lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.dataSource = self
         view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clear
         view.clipsToBounds = false
@@ -44,9 +53,12 @@ final class HourlyForecastView: UIView {
         return view
     }()
 
+    // MARK: - View Lifecycles
+
     init() {
         super.init(frame: .zero)
 
+        self.collectionView.dataSource = self.datasource
         self.setupViews()
     }
 
@@ -54,6 +66,27 @@ final class HourlyForecastView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Functions
+
+    func configureDataSource() -> DataSource {
+
+        DataSource(collectionView: self
+            .collectionView) { collectionView, indexPath, model -> UICollectionViewCell? in
+
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.id,
+                                                              for: indexPath) as? CellType
+                cell?.timeLabel.text = Date(string: model.time).time
+                cell?.weatherLabel.text = "\(Int(model.tempC))"
+                let icon = model.condition.code
+                if let imageName = WeatherIconFactory.get(code: icon, isDay: model.isDay) {
+                    cell?.weatherImageView.image = UIImage(systemName: imageName)
+                }
+                return cell
+        }
+    }
+}
+
+extension HourlyForecastView {
     private func setupViews() {
 
         self.setupContentStackView()
@@ -78,22 +111,5 @@ final class HourlyForecastView: UIView {
             let ratio: CGFloat = 2
             make.height.equalTo(width * ratio)
         }
-    }
-}
-
-// MARK: UICollectionViewDataSource
-
-extension HourlyForecastView: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.id,
-                                                            for: indexPath) as? CellType
-        else { fatalError() }
-        return cell
     }
 }

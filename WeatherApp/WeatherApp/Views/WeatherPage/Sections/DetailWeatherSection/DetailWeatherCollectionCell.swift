@@ -18,14 +18,12 @@ final class DetailWeatherCollectionCell: UICollectionViewCell {
     private(set) lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .lightText
-        view.text = "title"
         return view
     }()
 
     private(set) lazy var subtitleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .white
-        view.text = "subtitle"
         return view
     }()
 

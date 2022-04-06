@@ -9,7 +9,9 @@ import UIKit
 
 final class HourlyForecastCollectionCell: UICollectionViewCell {
 
-    private(set) lazy var contentStackView: UIStackView = {
+    // MARK: - UI Variables
+
+    private lazy var contentStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.spacing = WAConstant.Margin.small
@@ -19,7 +21,6 @@ final class HourlyForecastCollectionCell: UICollectionViewCell {
 
     private(set) lazy var timeLabel: UILabel = {
         let view = UILabel()
-        view.text = "14:00"
         view.textColor = .white
         return view
     }()
@@ -27,16 +28,17 @@ final class HourlyForecastCollectionCell: UICollectionViewCell {
     private(set) lazy var weatherImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(systemName: "cloud.sun.rain.fill")?.withRenderingMode(.alwaysOriginal)
+        view.tintColor = .white
         return view
     }()
 
     private(set) lazy var weatherLabel: UILabel = {
         let view = UILabel()
-        view.text = "14 C"
         view.textColor = .white
         return view
     }()
+
+    // MARK: - View Lifecycles
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,12 +51,16 @@ final class HourlyForecastCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - UI Configurations
+
     private func configBackgroundView() {
 
         self.contentView.backgroundColor = .white.withAlphaComponent(0.3)
         self.contentView.layer.cornerRadius = 16
     }
+}
 
+extension HourlyForecastCollectionCell {
     private func setupViews() {
 
         self.setupContentStackView()

@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import WeatherCore
 
-final class DetailWeatherView: UIView {
+final class DetailWeatherView: UIView, DiffableCollectionView {
 
-    private typealias CellType = DetailWeatherCollectionCell
+    // MARK: - Constants
+
+    typealias Entity = DetailWeatherModel
+    typealias CellType = DetailWeatherCollectionCell
+
+    // MARK: - Logical Variables
+
+    lazy var datasource: DataSource = configureDataSource()
+
+    // MARK: - UI Variables
 
     private(set) lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -21,7 +31,6 @@ final class DetailWeatherView: UIView {
 
     private(set) lazy var collectionView: UICollectionView = {
         let view = WADynamicCollectionView(frame: .zero, collectionViewLayout: layout)
-        view.dataSource = self
         view.delegate = self
         view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clear
@@ -29,34 +38,39 @@ final class DetailWeatherView: UIView {
         return view
     }()
 
+    // MARK: - View Lifecycles
+
     init() {
         super.init(frame: .zero)
-
-        self.addSubview(self.collectionView)
-        self.collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        self.collectionView.dataSource = self.datasource
+        self.setupViews()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-// MARK: UICollectionViewDataSource
+    // MARK: - Functions
 
-extension DetailWeatherView: UICollectionViewDataSource {
+    func configureDataSource() -> DataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        DataSource(collectionView: self
+            .collectionView) { collectionView, indexPath, model -> UICollectionViewCell? in
+
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.id,
+                                                              for: indexPath) as? CellType
+                cell?.titleLabel.text = model.title
+                cell?.subtitleLabel.text = model.value
+                return cell
+        }
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.id,
-                                                            for: indexPath) as? CellType
-        else { fatalError() }
-        return cell
+    private func setupViews() {
+        self.addSubview(self.collectionView)
+        self.collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(2 * WAConstant.ControlHeight.big)
+        }
     }
 }
 

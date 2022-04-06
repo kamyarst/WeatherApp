@@ -9,7 +9,13 @@ import UIKit
 
 final class CurrentWeatherView: UIView {
 
-    private(set) lazy var contentStackView: UIStackView = {
+    // MARK: - Constants
+
+    // MARK: - Logical Variables
+
+    // MARK: - UI Variables
+
+    private lazy var contentStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.alignment = .center
@@ -17,7 +23,7 @@ final class CurrentWeatherView: UIView {
         return view
     }()
 
-    private(set) lazy var currentStackView: UIStackView = {
+    private lazy var currentStackView: UIStackView = {
         let view = UIStackView()
         view.alignment = .center
         view.spacing = WAConstant.Margin.medium
@@ -27,14 +33,14 @@ final class CurrentWeatherView: UIView {
     private(set) lazy var currentIconImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(systemName: "cloud.sun.rain.fill")?.withRenderingMode(.alwaysOriginal)
+        view.tintColor = .white
         return view
     }()
 
     private(set) lazy var currentDegreeLabel: UILabel = {
         let view = UILabel()
         view.textColor = .white
-        view.text = "11"
+        view.text = "-"
         view.font = WAFont.fixedFont(.bold, 75)
         return view
     }()
@@ -50,14 +56,14 @@ final class CurrentWeatherView: UIView {
     private(set) lazy var feelLikeLabel: UILabel = {
         let view = UILabel()
         view.textColor = .lightText
-        view.text = "Feels like 18"
+        view.text = "Feels like -"
         return view
     }()
 
     private(set) lazy var currentWeatherLabel: UILabel = {
         let view = UILabel()
         view.textColor = .lightText
-        view.text = "Partly Cloudy"
+        view.text = "-"
         return view
     }()
 
@@ -65,11 +71,18 @@ final class CurrentWeatherView: UIView {
         let view = UILabel()
         view.textColor = .white
         view.font = WAFont.dynamicFont(.bold, .largeTitle)
-        view.text = "London"
+        view.text = "-"
         return view
     }()
 
-    private(set) lazy var trendStackView: UIStackView = {
+    private(set) lazy var regionLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .lightText
+        view.text = "-"
+        return view
+    }()
+
+    private lazy var trendStackView: UIStackView = {
         let view = UIStackView()
         view.spacing = WAConstant.Margin.veryBig
         return view
@@ -78,7 +91,7 @@ final class CurrentWeatherView: UIView {
     private(set) lazy var lowTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
         view.contentStackView.spacing = WAConstant.Margin.verySmall
-        view.titleLabel.text = "12" + UnitTemperature.celsius.symbol
+        view.titleLabel.text = "-" + UnitTemperature.celsius.symbol
         view.imageView.image = UIImage(systemName: "arrowtriangle.down.fill")
         return view
     }()
@@ -86,10 +99,12 @@ final class CurrentWeatherView: UIView {
     private(set) lazy var upTrendImageLabel: WACImageLabel = {
         let view = WACImageLabel()
         view.contentStackView.spacing = WAConstant.Margin.verySmall
-        view.titleLabel.text = "20" + UnitTemperature.celsius.symbol
+        view.titleLabel.text = "-" + UnitTemperature.celsius.symbol
         view.imageView.image = UIImage(systemName: "arrowtriangle.up.fill")
         return view
     }()
+
+    // MARK: - View Lifecycles
 
     init() {
         super.init(frame: .zero)
@@ -109,6 +124,7 @@ extension CurrentWeatherView {
         self.setupContentStackView()
         self.setupCurrentIconImageView()
         self.contentStackView.addArrangedSubview(self.locationLabel)
+        self.contentStackView.addArrangedSubview(self.regionLabel)
         self.currentStackView.addArrangedSubview(self.currentDegreeLabel)
         self.currentStackView.addArrangedSubview(self.unitLabel)
         self.contentStackView.addArrangedSubview(self.currentStackView)
