@@ -24,6 +24,7 @@
 		62604B1227E8D50A006A574B /* LocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1127E8D50A006A574B /* LocationLoader.swift */; };
 		62604B1427E8D8D7006A574B /* RemoteLocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */; };
 		62604B1627E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */; };
+		62E65FDF27FADFE9004BDEBF /* WeatherRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E65FDE27FADFE9004BDEBF /* WeatherRepositoryTests.swift */; };
 		62FB58B827F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FB58B727F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift */; };
 		62FB58BA27F1A9A100837786 /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FB58B927F1A9A100837786 /* HTTPClientSpy.swift */; };
 		62FB58BD27F1F3FA00837786 /* WeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FB58BC27F1F3FA00837786 /* WeatherEndpoint.swift */; };
@@ -66,6 +67,7 @@
 		62604B1127E8D50A006A574B /* LocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLoader.swift; sourceTree = "<group>"; };
 		62604B1327E8D8D7006A574B /* RemoteLocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLocationLoader.swift; sourceTree = "<group>"; };
 		62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocationFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
+		62E65FDE27FADFE9004BDEBF /* WeatherRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryTests.swift; sourceTree = "<group>"; };
 		62FB58B727F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWeatherFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		62FB58B927F1A9A100837786 /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		62FB58BC27F1F3FA00837786 /* WeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndpoint.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				62604B1527E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift */,
 				622AF6F527EE17AF0042693B /* URLSessionHTTPClientTests.swift */,
 				62FB58B727F1A8A700837786 /* LoadWeatherFromRemoteUseCaseTests.swift */,
+				62E65FDE27FADFE9004BDEBF /* WeatherRepositoryTests.swift */,
 			);
 			path = WeatherCoreTests;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E65FDF27FADFE9004BDEBF /* WeatherRepositoryTests.swift in Sources */,
 				622AF70427EF1D7C0042693B /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
 				62FB58BA27F1A9A100837786 /* HTTPClientSpy.swift in Sources */,
 				62604B1627E8D9F1006A574B /* LoadLocationFromRemoteUseCaseTests.swift in Sources */,
