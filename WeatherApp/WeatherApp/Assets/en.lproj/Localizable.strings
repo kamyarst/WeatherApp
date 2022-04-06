@@ -9,11 +9,15 @@
 // General
 general.wait = "Please wait...";
 
+// General Weather
+weather.feelsLike = "Feels like %d";
+weather.sunset = "Sunset";
+weather.sunrise = "Sunrise";
+
 // Weather Controller
 weatherController.tabBar.title = "Live";
 weatherController.hourlyForecast.title = "Upcoming Hours";
 weatherController.dailyForecast.title = "Upcoming Days";
-
 
 // Location Controller
 locationController.tabBar.title = "Search";
