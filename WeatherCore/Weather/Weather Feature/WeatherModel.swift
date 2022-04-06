@@ -201,6 +201,10 @@ public struct HourModel: Codable, Hashable {
         self.chanceOfSnow = chanceOfSnow
     }
 
+    public static func == (lhs: HourModel, rhs: HourModel) -> Bool {
+        lhs.timeEpoch == rhs.timeEpoch
+    }
+
     enum CodingKeys: String, CodingKey {
         case timeEpoch = "time_epoch"
         case time
@@ -214,9 +218,5 @@ public struct HourModel: Codable, Hashable {
         case chanceOfRain = "chance_of_rain"
         case willItSnow = "will_it_snow"
         case chanceOfSnow = "chance_of_snow"
-    }
-
-    public static func == (lhs: HourModel, rhs: HourModel) -> Bool {
-        lhs.timeEpoch == rhs.timeEpoch
     }
 }

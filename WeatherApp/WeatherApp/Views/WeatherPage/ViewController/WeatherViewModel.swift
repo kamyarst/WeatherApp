@@ -2,7 +2,7 @@
 //  WeatherViewModel.swift
 //  WeatherApp
 //
-//  Created by adanic on 4/6/22.
+//  Created by Kamyar on 4/6/22.
 //
 
 import Combine

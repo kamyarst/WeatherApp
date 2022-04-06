@@ -26,14 +26,3 @@ public enum LocationEndpoint: Endpoint {
         }
     }
 }
-
-protocol Endpoint {
-    var baseURL: URL { get }
-    var apiKey: String { get }
-    var url: URL { get }
-}
-
-extension Endpoint {
-    var baseURL: URL { URL(string: "https://api.weatherapi.com")! }
-    var apiKey: String { "66a6dc4a010e4e91919132456222103" }
-}
