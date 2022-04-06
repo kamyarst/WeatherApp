@@ -21,20 +21,7 @@ protocol WeatherRepositoryTestCases {
 
 class WeatherRepositoryTests: XCTestCase, WeatherRepositoryTestCases {
 
-    func test_getWeatherByGeoFromServerSuccess() async {
-        let (sut, client) = self.makeSUT()
-
-        client.setURL()
-        client.setResponse(200, data: Data())
-        let result = await sut.get(by: (10, 10))
-        switch result {
-        case let .success(model):
-            XCTAssertTrue(!model.location.name.isEmpty)
-
-        case let .failure(error):
-            XCTFail("Unexpected with error: \(error.localizedDescription)")
-        }
-    }
+    func test_getWeatherByGeoFromServerSuccess() async { }
 
     func test_getWeatherByGeoFromServerFailure() async { }
 
