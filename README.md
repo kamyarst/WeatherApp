@@ -50,3 +50,10 @@ The API is provided by [WeatherAPI](https://www.weatherapi.com/)
 ## License
 
 WeatherApp is released under the MIT license. See [LICENSE](LICENSE) for details.
+
+## TODO
+
+- [ ] Implement Search use case
+- [ ] Implement Caching data
+- [ ] Improve UI
+- [ ] Add app icon
