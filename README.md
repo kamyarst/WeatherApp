@@ -5,15 +5,16 @@
 
 <table border="0"><tr>
   <td>
-    <img alt="WeatherApp Image" src="https://github.com/kamyarst/WeatherApp/tree/develop/images/mock.png" />
+    <img alt="WeatherApp Image" src="https://github.com/kamyarst/WeatherApp/blob/feature/readme/images/demo.png" width="500px"/>
   </td><td>
+	Contents:
     <ul>
         <li><a href="#features">Features</a>
         <li><a href="#app-requirements">App Requirements</a>
         <li><a href="#third-parties">Third-Parties</a>
         <li><a href="#api">API</a>
 		<li><a href="#license">License</a>
-		<li><a href="#TODO">TODO</a>
+		<li><a href="#todo">TODO</a>
     </ul>
   </td>
 </tr></table>
@@ -51,7 +52,7 @@ The API is provided by [WeatherAPI](https://www.weatherapi.com/)
 
 WeatherApp is released under the MIT license. See [LICENSE](LICENSE) for details.
 
-## TODO
+## Todo
 
 - [ ] Implement Search use case
 - [ ] Implement Caching data
