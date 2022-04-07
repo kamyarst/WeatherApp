@@ -1,6 +1,6 @@
 # WeatherApp
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kamyarst/weatherapp/CI-iOS)
+[![CI-iOS](https://github.com/kamyarst/WeatherApp/actions/workflows/CI.yml/badge.svg)](https://github.com/kamyarst/WeatherApp/actions/workflows/CI.yml)
 ![GitHub](https://img.shields.io/github/license/kamyarst/weatherapp)
 
 <table border="0"><tr>
