@@ -5,7 +5,7 @@
 
 <table border="0"><tr>
   <td>
-    <img alt="WeatherApp Image" src="https://github.com/kamyarst/WeatherApp/blob/feature/readme/images/demo.png" width="300px"/>
+    <img alt="WeatherApp Image" src="https://github.com/kamyarst/WeatherApp/blob/develop/images/demo.png" width="300px"/>
   </td><td>
 	Contents:
     <ul>
