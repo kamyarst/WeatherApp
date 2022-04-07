@@ -3,12 +3,20 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kamyarst/weatherapp/CI-iOS)
 ![GitHub](https://img.shields.io/github/license/kamyarst/weatherapp)
 
-### Contents
-- [Features](README.md#features)
-- [App Requirements](README.md#app-requirements)
-- [Third-Parties](README.md#third-parties)
-- [API](README.md#api)
-- [License](README.md#license)
+<table border="0"><tr>
+  <td>
+    <img alt="WeatherApp Image" src="https://github.com/kamyarst/WeatherApp/tree/develop/images/mock.png" />
+  </td><td>
+    <ul>
+        <li><a href="#features">Features</a>
+        <li><a href="#app-requirements">App Requirements</a>
+        <li><a href="#third-parties">Third-Parties</a>
+        <li><a href="#api">API</a>
+		<li><a href="#license">License</a>
+		<li><a href="#TODO">TODO</a>
+    </ul>
+  </td>
+</tr></table>
 
 ## Features
 
